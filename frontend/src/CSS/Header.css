@@ -1,0 +1,9 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-header {
+  width: 10rem;
+  height: 3rem;
+}
