@@ -2,12 +2,13 @@
   background-color: white;
   padding: 0.5rem;
   font-weight: bold;
-  border: 3px solid transparent;
+  border: 3px solid white;
   transition: 400ms all;
   background-color: var(--orange);
   width: 7rem;
   border: 2px solid;
   border-radius: 15px;
+  color:white;
 }
 
 .btnH:hover {
