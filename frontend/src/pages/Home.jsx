@@ -9,7 +9,7 @@ import Header from "../components/Header";
 import "../CSS/Home.css";
 import photoHome from "../assets/photo-home.jpg";
 import ButtonMyAccount from "../components/ButtonMyAccount";
-import Subscription from "./Subscription";
+import Subscription from "../components/Subscription";
 import Activity from "../components/Activity";
 import WhyUs from "../components/WhyUs";
 

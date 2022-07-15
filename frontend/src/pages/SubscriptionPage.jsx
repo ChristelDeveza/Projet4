@@ -1,10 +1,8 @@
 import React from "react";
-// import { SubscriptionDatas } from "../datas/SubscriptionDatas";
-import CardSubscription from "../components/CardSubscription";
-import "../CSS/Subscription.css";
+import Header from "../components/Header";
 
-function Subscription() {
-  const SubscriptionDatas = [
+function SubscriptionPage() {
+  const SubscriptionPageDatas = [
     {
       title: "CHEAP",
       price: "16,99 € pendant 6 mois, puis 21,99 € les 6 autres mois",
@@ -119,28 +117,22 @@ function Subscription() {
   ];
 
   return (
-    <div className="subscription">
-      <div>
-        <h2>NOS ABONNEMENTS</h2>
-        <hr />
-      </div>
-      <div className="box-subscription">
-        {SubscriptionDatas.map((data) => {
-          return (
-            <div className="card-subscription">
-              <CardSubscription
-                key={data.title}
-                title={data.title}
-                price={data.price}
-                advantages={data.advantages}
-                description={data.description}
-              />
-            </div>
-          );
-        })}
-      </div>
+    <div className="subscription-page">
+      <Header />
+      {SubscriptionPageDatas.map((data) => {
+        return (
+          <div key={data.title}>
+            <ul>
+              {data.title}
+              {data.price}
+              {data.advantages}
+              {data.description}
+            </ul>
+          </div>
+        );
+      })}
     </div>
   );
 }
 
-export default Subscription;
+export default SubscriptionPage;
