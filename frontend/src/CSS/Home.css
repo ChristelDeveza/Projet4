@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 100vh;
+ 
 }
 
 .left-home-box {
@@ -19,8 +19,9 @@
 
 .text-home-header {
   margin-top: 4rem;
-  background-color: black;
+  background-color: var(--prussian-blue);
   border-radius: 4rem;
+  border:white solid 3px;
   width: fit-content;
   padding: 20px 13px;
   color: white;
@@ -37,6 +38,11 @@
   font-size: 2rem;
   font-weight: bolder;
   color: white;
+}
+
+.icon-flame {
+  color: var(--maximum-red);
+  font-size: xx-large;
 }
 
 .stats {
@@ -103,6 +109,7 @@
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
+  height: 70vh;
   
 }
 

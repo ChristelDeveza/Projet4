@@ -1,0 +1,15 @@
+.btnH {
+  background-color: white;
+  padding: 0.5rem;
+  font-weight: bold;
+  border: 3px solid transparent;
+  transition: 400ms all;
+  background-color: var(--orange);
+  width: 7rem;
+  border: 2px solid;
+  border-radius: 15px;
+}
+
+.btnH:hover {
+  cursor: pointer;
+}

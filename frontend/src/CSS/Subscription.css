@@ -1,0 +1,32 @@
+.subscription {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+.subscription h2 {
+  font-weight: bold;
+  justify-content: center;
+  color: white;
+}
+
+.subscription h3 {
+  font-weight: bolder;
+  font-size: larger;
+  text-align: center;
+  color: var(--maximum-red);
+}
+
+.box-subscription {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+.card-subscription {
+  background-color: var(--lemon-meringue);
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: justify;
+}

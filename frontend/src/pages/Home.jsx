@@ -1,7 +1,10 @@
+import { GoFlame } from "react-icons/go";
 import Header from "../components/Header";
 import "../CSS/Home.css";
-import logoFlamme from "../assets/logo-flamme.svg";
+
 import photoHome from "../assets/photo-home.jpg";
+import ButtonMyAccount from "../components/ButtonMyAccount";
+import Subscription from "./Subscription";
 
 export default function Home() {
   return (
@@ -9,7 +12,7 @@ export default function Home() {
       <div className="left-home-box">
         <Header />
         <div className="text-home-header">
-          <img className="logo-flamme" src={logoFlamme} alt="logo-flamme" />
+          <GoFlame className="icon-flame" />
           <span>N'attends plus, contacte nous pour une scéance d'essai</span>
         </div>
         <div className="title">
@@ -38,11 +41,10 @@ export default function Home() {
             DECOUVRIR
           </button>
         </div>
+        <Subscription />
       </div>
       <div className="right-home-box">
-        <button type="button" className="btn-mon-compte">
-          MON COMPTE
-        </button>
+        <ButtonMyAccount />
         <div>
           <img className="photoHome" src={photoHome} alt="photohome" />
         </div>
