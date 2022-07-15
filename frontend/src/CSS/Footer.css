@@ -1,0 +1,16 @@
+.footer {
+  
+background-color: black;
+}
+
+.contact {
+  margin: 0;
+  text-align: center;
+  color: white;
+}
+
+.pContact {
+  color: white;
+  text-align: center;
+  padding: 0;
+}

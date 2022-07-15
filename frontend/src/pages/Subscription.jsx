@@ -122,6 +122,7 @@ function Subscription() {
     <div className="subscription">
       <div>
         <h2>NOS ABONNEMENTS</h2>
+        <hr />
       </div>
       <div className="box-subscription">
         {SubscriptionDatas.map((data) => {

@@ -1,0 +1,18 @@
+.advantages {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 2rem;
+}
+
+.advantages h2 {
+  font-weight: bold;
+  justify-content: center;
+  color: white;
+}
+
+.advantages p {
+  color: white;
+  font-size: large;
+  font-weight: bolder;
+}
