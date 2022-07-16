@@ -27,7 +27,16 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  
 }
+
+/* .photoHome {
+  position: absolute;
+  top: 10rem;
+  right: 8rem;
+  width: 35rem;
+  border-radius: 10px 100px / 120px;
+} */
 
 .title {
   display: flex;
@@ -113,7 +122,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 2rem;
 }
 
 .btn-mon-compte {
@@ -127,13 +135,13 @@
   cursor: pointer;
 }
 
-.photoHome {
+/* .photoHome {
   position: absolute;
   top: 10rem;
   right: 8rem;
   width: 35rem;
   border-radius: 10px 100px / 120px;
-}
+} */
 
 .icon-activities {
   display: flex;
