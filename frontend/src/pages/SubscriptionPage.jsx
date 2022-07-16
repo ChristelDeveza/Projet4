@@ -1,4 +1,9 @@
 import React from "react";
+import { BsCheck2Circle } from "react-icons/bs";
+import { GoFlame } from "react-icons/go";
+import "../CSS/SubscriptionPage.css";
+import muscu from "../assets/muscu.jpg";
+import ButtonInscription from "../components/ButtonInscription";
 
 function SubscriptionPage() {
   const SubscriptionPageDatas = [
@@ -7,18 +12,33 @@ function SubscriptionPage() {
       price: "16,99 € pendant 6 mois, puis 21,99 € les 6 autres mois",
       advantages: (
         <p>
-          <ul>
-            <li>Faites du sport à petit prix</li>
-            <li>Accès à la salle 2 fois/semaine</li>
-            <li>Accès à tous les équipements, à l'acception du spa corner</li>
-            <li>Idéal pour faire du sport en douceur</li>
-            <li>Le petit plus : un pack de bienvenue offert</li>
+          <ul className="check-subs">
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Faites du sport à petit prix
+            </li>
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Accès à la salle 2 fois/semaine
+            </li>
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Accès à tous les équipements, à l'acception du spa corner
+            </li>
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Idéal pour faire du sport en douceur
+            </li>
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Le petit plus : un pack de bienvenue offert
+            </li>
           </ul>
         </p>
       ),
       description: (
         <p>
-          <ul>
+          <ul className="check-subs">
             <li>Accès libre à votre salle de 9h à 20h</li>
             <li>
               2 entrées par semaine : une fois entré, vous pouvez rester autant
@@ -42,19 +62,37 @@ function SubscriptionPage() {
       price: "23,99 € pendant 6 mois, puis 29,99 € les 6 autres mois",
       advantages: (
         <p>
-          <ul>
-            <li>Faites du sport à petit prix</li>
-            <li>Accès illimité à la salle</li>
-            <li>Accès à tous les équipements, à l'acception du spa corner</li>
-            <li>Idéal pour se remettre en forme et atteindre ses objectifs</li>
-            <li>Pack de bienvenue offert</li>
-            <li>Le petit plus : un coaching gratuit</li>
+          <ul className="check-subs">
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Faites du sport à petit prix
+            </li>
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Accès illimité à la salle
+            </li>
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Accès à tous les équipements, à l'acception du spa corner
+            </li>
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Idéal pour se remettre en forme et atteindre ses objectifs
+            </li>
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Pack de bienvenue offert
+            </li>
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Le petit plus : un coaching gratuit
+            </li>
           </ul>
         </p>
       ),
       description: (
         <p>
-          <ul>
+          <ul className="check-subs">
             <li>Accès illimité à votre salle de 9h à 20h</li>
             <li>Engagement d'un an</li>
             <li>Carte de membre</li>
@@ -78,19 +116,37 @@ function SubscriptionPage() {
       price: "31,99 € pendant 6 mois, puis 36,99 € les 6 autres mois",
       advantages: (
         <p>
-          <ul>
-            <li>Faites du sport à petit prix</li>
-            <li>Accès illimité à la salle</li>
-            <li>Accès à tous les équipements, spa corner inclus</li>
-            <li>Idéal pour se remettre en forme et atteindre ses objectifs</li>
-            <li>Pack de bienvenue offert</li>
-            <li>Le petit plus : accès au spa</li>
+          <ul className="check-subs">
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Faites du sport à petit prix
+            </li>
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Accès illimité à la salle
+            </li>
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Accès à tous les équipements, spa corner inclus
+            </li>
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Idéal pour se remettre en forme et atteindre ses objectifs
+            </li>
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Pack de bienvenue offert
+            </li>
+            <li>
+              <BsCheck2Circle className="color-check-subs" />
+              Le petit plus : accès au spa
+            </li>
           </ul>
         </p>
       ),
       description: (
         <p>
-          <ul>
+          <ul className="check-subs">
             <li>Accès illimité à votre salle 24h/24</li>
             <li>Engagement d'un an</li>
             <li>Carte de membre gold</li>
@@ -117,18 +173,34 @@ function SubscriptionPage() {
 
   return (
     <div className="subscription-page">
-      {SubscriptionPageDatas.map((data) => {
-        return (
-          <div key={data.title}>
-            <ul>
-              {data.title}
-              {data.price}
-              {data.advantages}
-              {data.description}
-            </ul>
-          </div>
-        );
-      })}
+      <div className="img-subscription">
+        <img className="img-subscription-page" src={muscu} alt="muscu" />
+        <div className="header-subscription-page">
+          <h2>NOS ABONNEMENTS</h2>
+        </div>
+      </div>
+
+      <div className="subscription-page-container">
+        {SubscriptionPageDatas.map((data) => {
+          return (
+            <div className="box-subs" key={data.title}>
+              <ul>
+                <h3 className="title-subs-box">{data.title}</h3>
+                <h4 className="price">
+                  {" "}
+                  <GoFlame className="icon-flame" />
+                  {data.price}
+                </h4>
+                {data.advantages}
+                {data.description}
+                <div className="button-insc">
+                  <ButtonInscription />
+                </div>
+              </ul>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
