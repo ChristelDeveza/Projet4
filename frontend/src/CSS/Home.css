@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
- 
 }
 
 .left-home-box {
@@ -16,12 +15,11 @@
   flex-direction: column;
 }
 
-
 .text-home-header {
   margin-top: 4rem;
   background-color: var(--prussian-blue);
   border-radius: 4rem;
-  border:white solid 3px;
+  border: white solid 3px;
   width: fit-content;
   padding: 20px 13px;
   color: white;
@@ -70,6 +68,7 @@
   display: flex;
   flex-direction: row;
   gap: 3rem;
+  
 }
 
 .home-btn > :nth-child(1) {
@@ -95,10 +94,16 @@
   font-weight: bold;
   border: 3px solid transparent;
   transition: 400ms all;
+  text-decoration: none;
 }
 
 .btnH:hover {
   cursor: pointer;
+}
+
+.text-decoration {
+  text-decoration: none;
+  color:white;
 }
 
 .right-home-box {
@@ -133,16 +138,12 @@
 .icon-activities {
   display: flex;
   flex-direction: column;
-  gap:5rem;
+  gap: 5rem;
   margin-top: 82rem;
   font-size: 50px;
-  
 }
 
 .icon-advantages {
-  
   margin-top: 17rem;
   font-size: 50px;
-  
 }
-

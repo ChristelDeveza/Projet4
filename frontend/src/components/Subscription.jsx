@@ -1,6 +1,5 @@
 import React from "react";
-// import { SubscriptionDatas } from "../datas/SubscriptionDatas";
-import CardSubscription from "../components/CardSubscription";
+import CardSubscription from "./CardSubscription";
 import "../CSS/Subscription.css";
 
 function Subscription() {

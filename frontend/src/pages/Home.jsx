@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { GoFlame } from "react-icons/go";
 import { BiRun } from "react-icons/bi";
 import { IoIosFitness } from "react-icons/io";
@@ -5,11 +6,9 @@ import { MdSportsHandball } from "react-icons/md";
 import { GrYoga } from "react-icons/gr";
 import { GiHeartBeats } from "react-icons/gi";
 import { BsCheck2Circle } from "react-icons/bs";
-import Header from "../components/Header";
 import "../CSS/Home.css";
 import photoHome from "../assets/photo-home.jpg";
-import ButtonMyAccount from "../components/ButtonMyAccount";
-import Subscription from "./Subscription";
+import Subscription from "../components/Subscription";
 import Activity from "../components/Activity";
 import WhyUs from "../components/WhyUs";
 
@@ -17,7 +16,6 @@ export default function Home() {
   return (
     <div className="Home">
       <div className="left-home-box">
-        <Header />
         <div className="text-home-header">
           <GoFlame className="icon-flame" />
           <span>N'attends plus, contacte nous pour une scéance d'essai</span>
@@ -42,10 +40,15 @@ export default function Home() {
         </div>
         <div className="home-btn">
           <button className="btnH" type="button">
-            M'INSCRIRE
+            <Link to="MonCompte" className="text-decoration">
+              M'INSCRIRE
+            </Link>
           </button>
+
           <button className="btnH" type="button">
-            DECOUVRIR
+            <Link to="Abonnements" className="text-decoration">
+              DECOUVRIR
+            </Link>
           </button>
         </div>
         <Subscription />
@@ -53,7 +56,6 @@ export default function Home() {
         <WhyUs />
       </div>
       <div className="right-home-box">
-        <ButtonMyAccount />
         <div>
           <img className="photoHome" src={photoHome} alt="photohome" />
         </div>

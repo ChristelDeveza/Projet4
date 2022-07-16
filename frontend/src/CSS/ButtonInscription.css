@@ -14,3 +14,7 @@
 .btnH:hover {
   cursor: pointer;
 }
+.text-decoration {
+  text-decoration: none;
+  color:white;
+}
