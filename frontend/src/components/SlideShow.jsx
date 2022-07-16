@@ -8,7 +8,7 @@ import cardio from "../assets/cardio.jpg";
 import collectif from "../assets/cours-collectifs.jpg";
 
 function SlideShow() {
-  const colors = [
+  const slidePictures = [
     {
       picture: (
         <div>
@@ -47,7 +47,7 @@ function SlideShow() {
     timeoutRef.current = setTimeout(
       () =>
         setIndex((prevIndex) =>
-          prevIndex === colors.length - 1 ? 0 : prevIndex + 1
+          prevIndex === slidePictures.length - 1 ? 0 : prevIndex + 1
         ),
       delay
     );
@@ -63,7 +63,7 @@ function SlideShow() {
         className="slideshowSlider"
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
       >
-        {colors.map((data, index) => (
+        {slidePictures.map((data, index) => (
           <div className="slide" key={index}>
             {" "}
             {data.picture}{" "}
@@ -72,7 +72,7 @@ function SlideShow() {
       </div>
 
       <div className="slideshowDots">
-        {colors.map((_, idx) => (
+        {slidePictures.map((_, idx) => (
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions
           <div
             key={idx}
