@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../CSS/ButtonInscription.css";
 
 function ButtonInscription() {
@@ -6,7 +7,9 @@ function ButtonInscription() {
     <div>
       {" "}
       <button className="btnH" type="button">
-        M'INSCRIRE
+        <Link to="MonCompte" className="text-decoration">
+          M'INSCRIRE
+        </Link>
       </button>
     </div>
   );

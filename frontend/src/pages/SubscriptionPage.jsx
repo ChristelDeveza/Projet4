@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../components/Header";
 
 function SubscriptionPage() {
   const SubscriptionPageDatas = [
@@ -118,7 +117,6 @@ function SubscriptionPage() {
 
   return (
     <div className="subscription-page">
-      <Header />
       {SubscriptionPageDatas.map((data) => {
         return (
           <div key={data.title}>

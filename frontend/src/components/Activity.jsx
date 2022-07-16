@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../CSS/Activity.css";
 import muscu from "../assets/muscu.jpg";
 import cardio from "../assets/cardio.jpg";
@@ -14,28 +15,36 @@ function Activity() {
       </div>
       <div className="box-img">
         <div className="pictures">
-          <img src={muscu} alt="musculation" />
-          <div className="text-block">
-            <h4>Musculation</h4>
-          </div>
+          <Link to="Activités">
+            <img src={muscu} alt="musculation" />
+            <div className="text-block">
+              <h4>Musculation</h4>
+            </div>
+          </Link>
         </div>
         <div className="pictures">
-          <img src={cardio} alt="cardio-training" />
-          <div className="text-block">
-            <h4>Cardio-training</h4>
-          </div>
+          <Link to="Activités">
+            <img src={cardio} alt="cardio-training" />
+            <div className="text-block">
+              <h4>Cardio-training</h4>
+            </div>
+          </Link>
         </div>
         <div className="pictures">
-          <img src={collectif} alt="cours-collectifs" />
-          <div className="text-block">
-            <h4>Cours collectifs</h4>
-          </div>
+          <Link to="Activités">
+            <img src={collectif} alt="cours-collectifs" />
+            <div className="text-block">
+              <h4>Cours collectifs</h4>
+            </div>
+          </Link>
         </div>
         <div className="pictures">
-          <img src={yoga} alt="yoga" />
-          <div className="text-block">
-            <h4>Yoga</h4>
-          </div>
+          <Link to="Activités">
+            <img src={yoga} alt="yoga" />
+            <div className="text-block">
+              <h4>Yoga</h4>
+            </div>
+          </Link>
         </div>
       </div>
     </div>
