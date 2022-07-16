@@ -7,10 +7,10 @@ import { GrYoga } from "react-icons/gr";
 import { GiHeartBeats } from "react-icons/gi";
 import { BsCheck2Circle } from "react-icons/bs";
 import "../CSS/Home.css";
-import photoHome from "../assets/photo-home.jpg";
 import Subscription from "../components/Subscription";
 import Activity from "../components/Activity";
 import WhyUs from "../components/WhyUs";
+import SlideShow from "../components/SlideShow";
 
 export default function Home() {
   return (
@@ -57,7 +57,7 @@ export default function Home() {
       </div>
       <div className="right-home-box">
         <div>
-          <img className="photoHome" src={photoHome} alt="photohome" />
+          <SlideShow />
         </div>
         <div className="icon-activities">
           <BiRun />
