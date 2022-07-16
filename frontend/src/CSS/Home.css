@@ -147,3 +147,9 @@
   margin-top: 17rem;
   font-size: 50px;
 }
+
+@media screen and (max-width:768px){
+  .home {
+    flex-direction: column;
+  }
+}

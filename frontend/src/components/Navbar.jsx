@@ -34,7 +34,7 @@ function Navbar() {
               <Link to="Abonnements">Abonnements</Link>
             </li>
             <li>
-              <Link to="Activités">Activités</Link>
+              <Link to="Activites">Activités</Link>
             </li>
             <li>
               <Link to="APropos">A propos</Link>

@@ -15,7 +15,7 @@ function Activity() {
       </div>
       <div className="box-img">
         <div className="pictures">
-          <Link to="Activités">
+          <Link to="Activites">
             <img src={muscu} alt="musculation" />
             <div className="text-block">
               <h4>Musculation</h4>
@@ -23,7 +23,7 @@ function Activity() {
           </Link>
         </div>
         <div className="pictures">
-          <Link to="Activités">
+          <Link to="Activites">
             <img src={cardio} alt="cardio-training" />
             <div className="text-block">
               <h4>Cardio-training</h4>
@@ -31,7 +31,7 @@ function Activity() {
           </Link>
         </div>
         <div className="pictures">
-          <Link to="Activités">
+          <Link to="Activites">
             <img src={collectif} alt="cours-collectifs" />
             <div className="text-block">
               <h4>Cours collectifs</h4>
@@ -39,7 +39,7 @@ function Activity() {
           </Link>
         </div>
         <div className="pictures">
-          <Link to="Activités">
+          <Link to="Activites">
             <img src={yoga} alt="yoga" />
             <div className="text-block">
               <h4>Yoga</h4>
