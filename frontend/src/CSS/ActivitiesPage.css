@@ -6,6 +6,7 @@
 text-align: justify;
 align-items: center;
 }
+
 .header-activities {
   color:black
 }
@@ -18,7 +19,7 @@ align-items: center;
   display: flex;
   flex-direction: column;
   width:80rem;
-  
+  border-top: 2px solid var(--orange);
 }
 
 .box1 {
