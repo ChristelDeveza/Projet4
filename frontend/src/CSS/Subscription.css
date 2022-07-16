@@ -13,7 +13,7 @@
 
 .subscription h3 {
   font-weight: bolder;
-  font-size:xx-large;
+  font-size: xx-large;
   text-align: center;
   color: white;
 }
@@ -28,12 +28,19 @@
   color: white;
   padding: 2rem;
   text-align: justify;
-  border : 5px solid;
+  border: 5px solid;
   border-style: inset outset;
 }
 
 hr {
   background-color: var(--maximum-yellow-red);
-  width : 100%;
+  width: 100%;
   height: 1px;
+}
+
+@media screen and (max-width: 768px) {
+  .box-subscription {
+    flex-direction: column;
+    gap: 3rem;
+  }
 }
