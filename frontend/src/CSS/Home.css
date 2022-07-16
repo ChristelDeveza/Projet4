@@ -149,7 +149,11 @@
 }
 
 @media screen and (max-width:768px){
-  .home {
+  .Home {
     flex-direction: column;
+  }
+
+  .right-home-box {
+    display: none;
   }
 }

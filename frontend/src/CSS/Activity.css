@@ -37,3 +37,10 @@
   padding-left: 20px;
   padding-right: 20px;
 }
+
+@media screen and (max-width:768px){
+  .box-img img {
+    background-size: cover;
+    height: 200px;
+  }
+}
