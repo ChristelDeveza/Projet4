@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import Register from "../components/Register";
 import "../CSS/Login.css";
 
 function UserLoginPage() {
@@ -74,6 +75,7 @@ function UserLoginPage() {
               <Link className="new-account-link" to="CreerUnCompte">
                 Créer un compte
               </Link>
+              <Register />
             </span>
           </p>
         </section>

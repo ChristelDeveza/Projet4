@@ -22,7 +22,7 @@
 
 .title-login {
   text-align: center;
-  color: white;
+  color: var(--prussian-blue);
 }
 
 .login-input {
