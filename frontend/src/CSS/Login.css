@@ -1,0 +1,70 @@
+.login {
+ background-color: var(--lemon-meringue);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.login-form {
+  margin-top: 5rem;
+  background-color: var(--prussian-blue);
+  height: 300px;
+  width: 300px;
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 50px 35px;
+}
+
+.title-login {
+  text-align: center;
+  color: white;
+}
+
+.login-input {
+  display: block;
+  height: 50px;
+  width: 90%;
+  background-color: var(--lemon-meringue);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.login-button {
+  margin-top: 50px;
+  width: 100%;
+  background-color: var(--lemon-meringue);
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: var(--maximum-yellow-red);
+}
+
+.end-login-page {
+  text-align: center;
+}
+
+.end-login-page {
+  color: var(--prussian-blue);
+  font-weight: bold;
+}
+
+.new-account-link {
+  text-decoration: none;
+  color: var(--prussian-blue);
+  font-size: larger;
+  font-weight: bolder;
+}
