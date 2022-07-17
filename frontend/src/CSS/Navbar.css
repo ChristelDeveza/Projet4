@@ -2,13 +2,14 @@
   background-color: #181818;
   height: 80px;
   width: 100%;
-  /* position: fixed; */
-  
+  position: fixed;
+  z-index:100000;
   opacity: 2;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  box-shadow: inset 0px -1px 0px #c5c5c6;
 }
 
 .Navbar nav ul {
@@ -28,8 +29,8 @@
   color: white;
   font-weight: bolder;
 }
-.Navbar li:hover {
-  border-bottom : 5px solid var(--prussian-blue);
+.Navbar .lineHover:hover {
+  border-bottom : 5px solid var(--maximum-yellow-red);
 }
 
 .hamburger {
@@ -94,7 +95,7 @@
     align-items: center;
     position:absolute;
     background-color: #181818;
-    top:10%;
+    top:80%;
     left:-12rem;
     height: 100vh;
     transform: translate(-100%);
