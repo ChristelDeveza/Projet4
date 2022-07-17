@@ -28,18 +28,29 @@ function Navbar() {
           </div>
           <div className={!sidebar ? "nav-container" : "nav-container open"}>
             <li>
+              <Link
+                to="/"
+                className="nav-icon"
+                aria-label="visit homepage"
+                aria-current="page"
+              >
+                <span className="logo">FIT N CHEAP CLUB</span>
+              </Link>
+            </li>
+
+            <li className="lineHover">
               <Link to="/">Accueil</Link>
             </li>
-            <li>
+            <li className="lineHover">
               <Link to="Abonnements">Abonnements</Link>
             </li>
             <li>
               <Link to="Activites">Activités</Link>
             </li>
-            <li>
+            <li className="lineHover">
               <Link to="APropos">A propos</Link>
             </li>
-            <li>
+            <li className="lineHover">
               <Link to="Contact">Contact</Link>
             </li>
             <li>
