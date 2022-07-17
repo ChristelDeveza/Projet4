@@ -6,6 +6,7 @@ import { MdSportsHandball } from "react-icons/md";
 import { GrYoga } from "react-icons/gr";
 import { GiHeartBeats } from "react-icons/gi";
 import { BsCheck2Circle } from "react-icons/bs";
+import CountUp from "react-countup";
 import "../CSS/Home.css";
 import Subscription from "../components/Subscription";
 import Activity from "../components/Activity";
@@ -26,15 +27,21 @@ export default function Home() {
         </div>
         <div className="stats">
           <div>
-            <span>+5</span>
+            <span>
+              +<CountUp end={5} />
+            </span>
             <span>experts</span>
           </div>
           <div>
-            <span>+136</span>
+            <span>
+              +<CountUp end={136} />
+            </span>
             <span>adhérents</span>
           </div>
           <div>
-            <span>+45</span>
+            <span>
+              +<CountUp end={45} />
+            </span>
             <span>programmes</span>
           </div>
         </div>
