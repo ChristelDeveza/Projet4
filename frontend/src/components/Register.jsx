@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import "../CSS/Register.css";
 
 function Register() {
@@ -28,7 +27,7 @@ function Register() {
   }
 
   return (
-    <div>
+    <div className="register">
       <section>
         {/* <p
           ref={errorRef}
@@ -97,14 +96,6 @@ function Register() {
             ENREGISTRER
           </button>
         </form>
-        <p className="end-register-page">
-          Déjà un compte ?<br />
-          <span className="new-account">
-            <Link className="new-account-link" to="MonCompte">
-              Connectez-vous
-            </Link>
-          </span>
-        </p>
       </section>
     </div>
   );

@@ -1,5 +1,5 @@
 .register {
-  background-color: var(--lemon-meringue);
+  /* background-color: var(--lemon-meringue); */
    color: white;
    display: flex;
    flex-direction: row;

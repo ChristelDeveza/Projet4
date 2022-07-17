@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import "../CSS/Login.css";
 
 function Login() {
@@ -68,14 +67,6 @@ function Login() {
               SE CONNECTER
             </button>
           </form>
-          <p className="end-login-page">
-            Pas encore de compte ?<br />
-            <span className="new-account">
-              <Link className="new-account-link" to="MonCompte">
-                Créer votre compte
-              </Link>
-            </span>
-          </p>
         </section>
       )}
     </div>

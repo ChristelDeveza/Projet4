@@ -1,0 +1,18 @@
+.loginpage {
+  background-image: url("../assets/muscu.jpg");
+  background-size: cover;
+}
+
+.show-register-button {
+  margin-top: 7rem;
+  margin-left:43rem;
+  color: white;
+  background-color: transparent;
+  border: 2px solid;
+  width: 9rem;
+  background-color: var(--prussian-blue);
+  border-radius: 15px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
