@@ -1,102 +1,83 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import "../CSS/Register.css";
 
 function Register() {
-  const userRef = useRef();
-  // const errorRef = useRef();
-  const [userLastname, setUserLastname] = useState("");
-  const [userFirstname, setUserFirstname] = useState("");
-  const [userAddress, setUserAddress] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [passwordRegister, setPasswordRegister] = useState("");
-  // const [errorMsg, setErrorMsg] = useState("");
-  // const [isLogged, setisLogged] = useState(false);
-
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
+  const [lastname, setLastname] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    setUserLastname("");
-    setUserFirstname("");
-    setUserAddress("");
-    setUserEmail("");
-    setPasswordRegister("");
-    // setisLogged(true);
+    setLastname("");
+    setFirstname("");
+    setAddress("");
+    setEmail("");
+    setPassword("");
   }
 
   return (
     <div className="register">
-      <section>
-        {/* <p
-          ref={errorRef}
-          className={errorMsg ? "errormsg" : "offscreen"}
-          aria-live="assertive"
+      <h1 className="title-register">CREER UN COMPTE</h1>
+      <form onSubmit={handleSubmit} className="register-form">
+        <label htmlFor="name">Nom :</label>
+        <input
+          className="register-input"
+          type="text"
+          id="Name"
+          autoComplete="off"
+          onChange={(e) => setLastname(e.target.value)}
+          value={lastname}
+          required
+        />
+        <label htmlFor="firstname">Prénom :</label>
+        <input
+          className="register-input"
+          type="text"
+          id="Firstname"
+          autoComplete="off"
+          onChange={(e) => setFirstname(e.target.value)}
+          value={firstname}
+          required
+        />
+        <label htmlFor="address">Adresse :</label>
+        <input
+          className="register-input"
+          type="text"
+          id="address"
+          autoComplete="off"
+          onChange={(e) => setAddress(e.target.value)}
+          value={address}
+          required
+        />
+        <label htmlFor="email">E-mail :</label>
+        <input
+          className="register-input"
+          type="text"
+          id="email"
+          autoComplete="off"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+          required
+        />
+        <label htmlFor="password">Mot de passe :</label>
+        <input
+          className="register-input"
+          type="password"
+          id="password"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+          required
+        />
+        <button
+          className="register-button"
+          type="button"
+          onClick={handleSubmit}
         >
-          {errorMsg}
-        </p> */}
-
-        <h1 className="title-register">CREER UN COMPTE</h1>
-        <form onSubmit={handleSubmit} className="register-form">
-          <label htmlFor="name">Nom :</label>
-          <input
-            className="register-input"
-            type="text"
-            id="Name"
-            ref={userRef}
-            autoComplete="off"
-            onChange={(e) => setUserLastname(e.target.value)}
-            value={userLastname}
-            required
-          />
-          <label htmlFor="firstname">Prénom :</label>
-          <input
-            className="register-input"
-            type="text"
-            id="Firstname"
-            ref={userRef}
-            autoComplete="off"
-            onChange={(e) => setUserFirstname(e.target.value)}
-            value={userFirstname}
-            required
-          />
-          <label htmlFor="address">Adresse :</label>
-          <input
-            className="register-input"
-            type="text"
-            id="address"
-            ref={userRef}
-            autoComplete="off"
-            onChange={(e) => setUserAddress(e.target.value)}
-            value={userAddress}
-            required
-          />
-          <label htmlFor="email">E-mail :</label>
-          <input
-            className="register-input"
-            type="text"
-            id="email"
-            ref={userRef}
-            autoComplete="off"
-            onChange={(e) => setUserEmail(e.target.value)}
-            value={userEmail}
-            required
-          />
-          <label htmlFor="password">Mot de passe :</label>
-          <input
-            className="register-input"
-            type="password"
-            id="password"
-            onChange={(e) => setPasswordRegister(e.target.value)}
-            value={passwordRegister}
-            required
-          />
-          <button className="register-button" type="button">
-            ENREGISTRER
-          </button>
-        </form>
-      </section>
+          ENREGISTRER
+        </button>
+      </form>
     </div>
   );
 }
