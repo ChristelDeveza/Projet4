@@ -1,0 +1,46 @@
+.user-dashboard {
+  background-color: var(--prussian-blue);
+}
+
+.title-user-dashboard {
+  padding-top: 5rem;
+  color: white;
+  text-align: center;
+}
+
+.user-datas-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 2px solid var(--orange);
+}
+
+.ec-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.data-input {
+  height: 50px;
+  width: 20rem;
+  background-color: var(--lemon-meringue);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 300;
+}
+ .box-entete {
+  text-align: center;
+  color: white;
+ }
+
+ .subs-user-box {
+  border-top: 2px solid var(--orange);
+ }
+
+ .prog-user-box {
+  border-top: 2px solid var(--orange);
+ }
+
+  
