@@ -11,7 +11,7 @@ router.post("/register", AdherentController.browse);
 router.get("/usersubscription/:id", AdherentController.getSubscriptionByUser);
 
 // Route get user programme
-router.get("/userprogramme", AdherentController.browse);
+router.get("/programme", AdherentController.browse);
 
 // Route get one user datas
 router.get("/userdatas/:id", AdherentController.read);
