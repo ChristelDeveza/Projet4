@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+/* eslint-disable no-shadow */
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import HeaderAccountUser from "../components/HeaderAccountUser";
 import "../CSS/UserDashboardPage.css";
 
@@ -7,6 +9,25 @@ function UserDashboardPage() {
   const [firstname, setFirstname] = useState("");
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
+  const id = 1;
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/userdatas/${id}`)
+
+      .then((response) => {
+        const {
+          Name: lastname,
+          Firstname: firstname,
+          Address: address,
+          "E-mail": email,
+        } = response.data;
+        setLastname(lastname);
+        setFirstname(firstname);
+        setAddress(address);
+        setEmail(email);
+      });
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();

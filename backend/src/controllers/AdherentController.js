@@ -14,9 +14,8 @@ class UserController {
   };
 
   static read = (req, res) => {
-    const { id } = req.params;
     models.adherent
-      .find(id)
+      .find(req.params.id)
       .then(([rows]) => {
         if (rows[0] == null) {
           res.sendStatus(404);
