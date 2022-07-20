@@ -30,6 +30,23 @@ class UserController {
       });
   };
 
+  // Get user subscription
+  static getSubscriptionByUser = (req, res) => {
+    models.adherent
+      .findSubscriptionByUser(req.params.id)
+      .then(([rows]) => {
+        if (rows[0] == null) {
+          res.sendStatus(404);
+        } else {
+          res.send(rows[0]);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
+
   // Update adherent datas
   static edit = (req, res) => {
     const adherent = req.body;
