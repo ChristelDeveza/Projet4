@@ -1,21 +1,9 @@
 const models = require("../models");
 
-class UserController {
-  static browse = (req, res) => {
+class ProgrammeController {
+  // Get programmes by id
+  static getProgrammeById = (req, res) => {
     models.programme
-      .findAll()
-      .then(([rows]) => {
-        res.send(rows);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
-  };
-
-  // Get user datas
-  static read = (req, res) => {
-    models.adherent
       .find(req.params.id)
       .then(([rows]) => {
         if (rows[0] == null) {
@@ -30,10 +18,21 @@ class UserController {
       });
   };
 
-  // Get user subscription
-  static getSubscriptionByUser = (req, res) => {
-    models.adherent
-      .findSubscriptionByUser(req.params.id)
+  static browse = (req, res) => {
+    models.item
+      .findAll()
+      .then(([rows]) => {
+        res.send(rows);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
+
+  static read = (req, res) => {
+    models.item
+      .find(req.params.id)
       .then(([rows]) => {
         if (rows[0] == null) {
           res.sendStatus(404);
@@ -47,13 +46,15 @@ class UserController {
       });
   };
 
-  // Update adherent datas
   static edit = (req, res) => {
-    const adherent = req.body;
-    adherent.id = parseInt(req.params.id, 10);
+    const item = req.body;
 
-    models.adherent
-      .update(adherent)
+    // TODO validations (length, format...)
+
+    item.id = parseInt(req.params.id, 10);
+
+    models.item
+      .update(item)
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);
@@ -96,4 +97,4 @@ class UserController {
   };
 }
 
-module.exports = UserController;
+module.exports = ProgrammeController;
