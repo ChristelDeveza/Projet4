@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import HeaderAccountUser from "../components/HeaderAccountUser";
 import "../CSS/UserDashboardPage.css";
 
 function UserDashboardPage() {
@@ -17,13 +18,23 @@ function UserDashboardPage() {
 
   return (
     <div className="user-dashboard">
-      <h1 className="title-user-dashboard">MON COMPTE</h1>
+      <div className="photo-home">
+        <h1 className="title-user-dashboard">MON COMPTE</h1>
+        <div>
+          <HeaderAccountUser firstname={firstname} />
+        </div>
+      </div>
+
       <div className="user-datas-box">
         <div className="ec-box">
           <h2 className="box-entete">MES COORDONNEES</h2>
           <form onSubmit={handleSubmit} className="user-datas">
             <div>
-              <label htmlFor="name">Nom :</label>
+              <div>
+                <label className="label-input" htmlFor="name">
+                  Nom :
+                </label>
+              </div>
               <input
                 className="data-input"
                 type="text"
@@ -33,8 +44,11 @@ function UserDashboardPage() {
                 value={lastname}
                 required
               />
-
-              <label htmlFor="firstname">Prénom :</label>
+              <div>
+                <label className="label-input" htmlFor="firstname">
+                  Prénom :
+                </label>
+              </div>
               <input
                 className="data-input"
                 type="text"
@@ -45,7 +59,11 @@ function UserDashboardPage() {
                 required
               />
             </div>
-            <label htmlFor="address">Adresse :</label>
+            <div>
+              <label className="label-input" htmlFor="address">
+                Adresse :
+              </label>
+            </div>
             <input
               className="data-input"
               type="text"
@@ -55,7 +73,11 @@ function UserDashboardPage() {
               value={address}
               required
             />
-            <label htmlFor="email">E-mail :</label>
+            <div>
+              <label className="label-input" htmlFor="email">
+                E-mail :
+              </label>
+            </div>
             <input
               className="data-input"
               type="text"
@@ -66,13 +88,15 @@ function UserDashboardPage() {
               required
             />
             <div>
-              <button
-                className="update-button"
-                type="button"
-                onClick={handleSubmit}
-              >
-                MODIFIER
-              </button>
+              <div className="btn-update">
+                <button
+                  className="update-button"
+                  type="button"
+                  onClick={handleSubmit}
+                >
+                  MODIFIER
+                </button>
+              </div>
             </div>
           </form>
         </div>
@@ -81,6 +105,16 @@ function UserDashboardPage() {
         </div>
         <div className="prog-user-box">
           <h2 className="box-entete">MES PROGRAMMES</h2>
+          <label className="prog-select" htmlFor="programme-select">
+            Choisissez un programme:
+          </label>
+
+          <select name="pets" id="pet-select">
+            <option value="">--Choisir--</option>
+            <option value="Musculation">Musculation</option>
+            <option value="Cardio-training">Cardio-training</option>
+            <option value="Ligne">Ligne</option>
+          </select>
         </div>
       </div>
     </div>
