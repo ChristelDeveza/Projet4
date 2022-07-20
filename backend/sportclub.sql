@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `sportclub`.`adherent` (
   `Name` VARCHAR(255) NOT NULL,
   `Firstname` VARCHAR(255) NOT NULL,
   `Address` VARCHAR(255) NULL DEFAULT NULL,
-  `E-mail` VARCHAR(45) NOT NULL,
+  `Email` VARCHAR(45) NOT NULL,
   `Password` VARCHAR(255) NOT NULL,
   `IsCoach` TINYINT NOT NULL DEFAULT '0',
   `abonnement_id` INT NOT NULL,
