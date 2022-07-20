@@ -9,6 +9,7 @@ import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import UserLoginPage from "./pages/UserLoginPage";
 import Register from "./components/Register";
+import UserDashboardPage from "./pages/UserDashboardPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="Contact" element={<ContactPage />} />
           <Route path="Moncompte" element={<UserLoginPage />} />
           <Route path="CreerUnCompte" element={<Register />} />
+          <Route path="Moncompte/:id" element={<UserDashboardPage />} />
         </Routes>
       </Router>
       <Footer />
