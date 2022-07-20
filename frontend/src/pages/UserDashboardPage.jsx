@@ -14,7 +14,6 @@ function UserDashboardPage() {
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/userdatas/${id}`)
-
       .then((response) => {
         const {
           Name: lastname,
@@ -26,15 +25,20 @@ function UserDashboardPage() {
         setFirstname(firstname);
         setAddress(address);
         setEmail(email);
-      });
+      })
+      .catch((error) => console.error(error));
   }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
-    setLastname("");
-    setFirstname("");
-    setAddress("");
-    setEmail("");
+    axios
+      .put(`${import.meta.env.VITE_BACKEND_URL}/userdatas/${id}`, {
+        Name: lastname,
+        Firstname: firstname,
+        Address: address,
+        Email: email,
+      })
+      .catch((error) => console.error(error));
   }
 
   return (
