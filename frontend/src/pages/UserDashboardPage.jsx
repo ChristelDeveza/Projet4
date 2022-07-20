@@ -9,6 +9,7 @@ function UserDashboardPage() {
   const [firstname, setFirstname] = useState("");
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
+  const [subscription, setSubscription] = useState([]);
   const id = 1;
 
   useEffect(() => {
@@ -25,6 +26,15 @@ function UserDashboardPage() {
         setFirstname(firstname);
         setAddress(address);
         setEmail(email);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/usersubscription/${id}`)
+      .then((response) => {
+        setSubscription(response.data);
       })
       .catch((error) => console.error(error));
   }, []);
@@ -127,6 +137,18 @@ function UserDashboardPage() {
         </div>
         <div className="subs-user-box">
           <h2 className="box-entete">MON ABONNEMENT</h2>
+
+          {subscription ? (
+            <div>
+              <h3>
+                {subscription.firstname}, tu trouveras ci-après les conditions
+                et le détail de ton abonnement :
+              </h3>
+              {subscription.Name}
+              {subscription.Price}
+              {subscription.Description}
+            </div>
+          ) : null}
         </div>
         <div className="prog-user-box">
           <h2 className="box-entete">MES PROGRAMMES</h2>
