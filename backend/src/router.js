@@ -5,7 +5,7 @@ const { AdherentController } = require("./controllers");
 const router = express.Router();
 
 // Route register
-router.post("/register", AdherentController.browse);
+router.post("/register", AdherentController.register);
 
 // Route get subscription
 router.get("/usersubscription/:id", AdherentController.getSubscriptionByUser);

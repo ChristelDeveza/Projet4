@@ -1,6 +1,22 @@
 const models = require("../models");
 
 class UserController {
+  // Register a user
+  static register = (req, res) => {
+    const { Name, Firstname, Address, Email, Password } = req.body;
+    // TODO validations (length, format...)
+
+    models.adherent
+      .insert({ Name, Firstname, Address, Email, Password })
+      .then(([result]) => {
+        res.status(201).send({ ...result, id: result.insertId });
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
+
   static browse = (req, res) => {
     models.item
       .findAll()

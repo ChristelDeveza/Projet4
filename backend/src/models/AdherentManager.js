@@ -14,8 +14,14 @@ class UserManager extends AbstractManager {
 
   insert(adherent) {
     return this.connection.query(
-      `insert into ${UserManager.table} (title) values (?)`,
-      [adherent.title]
+      `insert into ${UserManager.table} (Name, Firstname, Address, Email, Password) values (?,?,?,?,?)`,
+      [
+        adherent.Name,
+        adherent.Firstname,
+        adherent.Address,
+        adherent.Email,
+        adherent.Password,
+      ]
     );
   }
 
