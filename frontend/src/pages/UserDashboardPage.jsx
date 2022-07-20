@@ -58,14 +58,15 @@ function UserDashboardPage() {
       })
       .catch((error) => console.error(error));
   }
-  const searchProgramm = (e) => {
+
+  function searchProgramm(e) {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/programme/${e.target.value}`)
       .then((response) => {
         setProgrammeById(response.data);
       })
       .catch((error) => console.error(error));
-  };
+  }
 
   return (
     <div className="user-dashboard">
