@@ -20,7 +20,7 @@ function UserDashboardPage() {
           Name: lastname,
           Firstname: firstname,
           Address: address,
-          "E-mail": email,
+          Email: email,
         } = response.data;
         setLastname(lastname);
         setFirstname(firstname);
