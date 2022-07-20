@@ -16,6 +16,8 @@ router.get("/userprogramme", AdherentController.browse);
 // Route get one user datas
 router.get("/userdatas/:id", AdherentController.read);
 
+router.put("/userdatas/:id", AdherentController.edit);
+
 // router.get("/items", ItemController.browse);
 // router.get("/items/:id", ItemController.read);
 // router.put("/items/:id", ItemController.edit);

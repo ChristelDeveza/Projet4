@@ -13,6 +13,7 @@ class UserController {
       });
   };
 
+  // Get user datas
   static read = (req, res) => {
     models.adherent
       .find(req.params.id)
@@ -29,15 +30,13 @@ class UserController {
       });
   };
 
+  // Update adherent datas
   static edit = (req, res) => {
-    const item = req.body;
+    const adherent = req.body;
+    adherent.id = parseInt(req.params.id, 10);
 
-    // TODO validations (length, format...)
-
-    item.id = parseInt(req.params.id, 10);
-
-    models.item
-      .update(item)
+    models.adherent
+      .update(adherent)
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);
