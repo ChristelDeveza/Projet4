@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../CSS/Register.css";
 
 function Register() {
@@ -7,14 +9,25 @@ function Register() {
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
-    setLastname("");
-    setFirstname("");
-    setAddress("");
-    setEmail("");
-    setPassword("");
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/register`, {
+        Name: lastname,
+        Firstname: firstname,
+        Address: address,
+        Email: email,
+        Password: password,
+      })
+      .then(() => {
+        // console.log(response.data);
+      })
+      .then(() => {
+        navigate("/MonCompte/1", { replace: true });
+      })
+      .catch((err) => console.error(err));
   }
 
   return (
