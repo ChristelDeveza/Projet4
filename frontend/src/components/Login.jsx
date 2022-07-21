@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "../CSS/Login.css";
 
 function Login() {
@@ -7,8 +8,23 @@ function Login() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setUser("");
-    setPassword("");
+    if (user && password) {
+      axios
+        .post(
+          `${import.meta.env.VITE_BACKEND_URL}/login`,
+          {
+            email: user,
+            password,
+          },
+          {
+            withCredentials: true,
+          }
+        )
+        .then((res) => res.data)
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   }
 
   return (
