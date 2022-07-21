@@ -25,7 +25,7 @@ function App() {
             <Route path="APropos" element={<AboutPage />} />
             <Route path="Contact" element={<ContactPage />} />
             <Route path="Moncompte" element={<UserLoginPage />} />
-            <Route path="CreerUnCompte" element={<Register />} />
+            <Route path="Moncompte/CreerUnCompte" element={<Register />} />
             <Route path="Moncompteuser" element={<UserDashboardPage />} />
           </Routes>
         </Router>

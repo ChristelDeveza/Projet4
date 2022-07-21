@@ -28,7 +28,7 @@ function Register() {
         localStorage.setItem("user", JSON.stringify(res.data));
       })
       .then(() => {
-        navigate("/MonCompteuser", { replace: true });
+        navigate("/", { replace: true });
       })
       .catch((err) => console.error(err));
   }
