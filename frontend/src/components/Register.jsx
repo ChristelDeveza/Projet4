@@ -25,7 +25,7 @@ function Register() {
         // console.log(response.data);
       })
       .then(() => {
-        navigate("/MonCompte/1", { replace: true });
+        navigate("/MonCompteuser", { replace: true });
       })
       .catch((err) => console.error(err));
   }
