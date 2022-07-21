@@ -2,15 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../CSS/ButtonInscription.css";
 
-function ButtonInscription() {
+function ButtonInscription(props) {
+  // eslint-disable-next-line react/prop-types
+  const { path } = props;
   return (
     <div>
       {" "}
-      <button className="btnH" type="button">
-        <Link to="MonCompte" className="text-decoration">
+      <Link to={path} className="text-decoration">
+        <button className="btnH" type="button">
           M'INSCRIRE
-        </Link>
-      </button>
+        </button>
+      </Link>
     </div>
   );
 }
