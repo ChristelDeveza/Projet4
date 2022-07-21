@@ -21,8 +21,12 @@ router.get("/programme/:id", ProgrammeController.getProgrammeById);
 
 // Route get one user datas
 router.get("/userdatas/:id", AdherentController.read);
+
 // Route update one user datas
 router.put("/userdatas/:id", AdherentController.edit);
+
+// Route logout
+router.get("/logout", AdherentController.logout);
 
 // router.get("/items", ItemController.browse);
 // router.get("/items/:id", ItemController.read);

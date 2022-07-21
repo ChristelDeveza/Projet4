@@ -170,6 +170,11 @@ class UserController {
       });
   };
 
+  // User logout
+  static logout = (req, res) => {
+    return res.clearCookie("access_token").sendStatus(200);
+  };
+
   static delete = (req, res) => {
     models.item
       .delete(req.params.id)

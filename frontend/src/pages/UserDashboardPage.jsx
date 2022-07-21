@@ -1,12 +1,13 @@
 /* eslint-disable no-shadow */
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import HeaderAccountUser from "../components/HeaderAccountUser";
 import "../CSS/UserDashboardPage.css";
 
 function UserDashboardPage() {
-  const { isOnline } = useContext(UserContext);
+  const { isOnline, setIsOnline } = useContext(UserContext);
   const [lastname, setLastname] = useState("");
   const [firstname, setFirstname] = useState("");
   const [address, setAddress] = useState("");
@@ -14,6 +15,7 @@ function UserDashboardPage() {
   const [subscription, setSubscription] = useState([]);
   const [programme, setProgramme] = useState();
   const [programmeById, setProgrammeById] = useState();
+  const navigate = useNavigate();
   const { id } = isOnline;
 
   useEffect(() => {
@@ -68,6 +70,23 @@ function UserDashboardPage() {
         setProgrammeById(response.data);
       })
       .catch((error) => console.error(error));
+  }
+
+  function logout() {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/logout`, {
+        withCredentials: true,
+      })
+      .then(() => {
+        navigate("/MonCompte", { replace: true });
+        setIsOnline(null);
+        localStorage.setItem("user", null);
+      })
+      .catch((err) => {
+        if (err.response.status === 401) {
+          console.error(err);
+        }
+      });
   }
 
   return (
@@ -149,6 +168,15 @@ function UserDashboardPage() {
                   onClick={handleSubmit}
                 >
                   MODIFIER
+                </button>
+              </div>
+              <div className="btn-disconnect">
+                <button
+                  className="disconnect-button"
+                  type="button"
+                  onClick={logout}
+                >
+                  SE DECONNECTER
                 </button>
               </div>
             </div>
