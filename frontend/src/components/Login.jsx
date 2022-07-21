@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 import "../CSS/Login.css";
 
 function Login() {
+  const { setIsOnline } = useContext(UserContext);
   const [password, setPassword] = useState("");
   const [user, setUser] = useState("");
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,7 +24,13 @@ function Login() {
             withCredentials: true,
           }
         )
-        .then((res) => res.data)
+        .then((res) => {
+          setIsOnline(res.data);
+          localStorage.setItem("user", JSON.stringify(res.data));
+        })
+        .then(() => {
+          navigate("/MonCompteuser", { replace: true });
+        })
         .catch((err) => {
           console.error(err);
         });

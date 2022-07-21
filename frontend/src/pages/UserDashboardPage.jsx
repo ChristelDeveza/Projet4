@@ -1,10 +1,12 @@
 /* eslint-disable no-shadow */
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { UserContext } from "../context/UserContext";
 import HeaderAccountUser from "../components/HeaderAccountUser";
 import "../CSS/UserDashboardPage.css";
 
 function UserDashboardPage() {
+  const { isOnline } = useContext(UserContext);
   const [lastname, setLastname] = useState("");
   const [firstname, setFirstname] = useState("");
   const [address, setAddress] = useState("");
@@ -12,7 +14,7 @@ function UserDashboardPage() {
   const [subscription, setSubscription] = useState([]);
   const [programme, setProgramme] = useState();
   const [programmeById, setProgrammeById] = useState();
-  const id = 1;
+  const { id } = isOnline;
 
   useEffect(() => {
     axios
