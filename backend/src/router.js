@@ -1,6 +1,7 @@
 const express = require("express");
 
 const { AdherentController, ProgrammeController } = require("./controllers");
+const { authorization } = require("./controllers/AdherentController");
 
 const router = express.Router();
 
@@ -20,13 +21,13 @@ router.get("/programme", AdherentController.browse);
 router.get("/programme/:id", ProgrammeController.getProgrammeById);
 
 // Route get one user datas
-router.get("/userdatas/:id", AdherentController.read);
+router.get("/userdatas", authorization, AdherentController.read);
 
 // Route update one user datas
-router.put("/userdatas/:id", AdherentController.edit);
+router.put("/userdatas", authorization, AdherentController.edit);
 
 // Route logout
-router.get("/logout", AdherentController.logout);
+router.get("/logout", authorization, AdherentController.logout);
 
 // router.get("/items", ItemController.browse);
 // router.get("/items/:id", ItemController.read);

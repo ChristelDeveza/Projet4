@@ -20,7 +20,9 @@ function UserDashboardPage() {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/userdatas/${id}`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/userdatas`, {
+        withCredentials: true,
+      })
       .then((response) => {
         const {
           Name: lastname,
@@ -54,12 +56,19 @@ function UserDashboardPage() {
   function handleSubmit(e) {
     e.preventDefault();
     axios
-      .put(`${import.meta.env.VITE_BACKEND_URL}/userdatas/${id}`, {
-        Name: lastname,
-        Firstname: firstname,
-        Address: address,
-        Email: email,
-      })
+      .put(
+        `${import.meta.env.VITE_BACKEND_URL}/userdatas`,
+        {
+          id,
+          Name: lastname,
+          Firstname: firstname,
+          Address: address,
+          Email: email,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .catch((error) => console.error(error));
   }
 

@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 import "../CSS/Register.css";
 
 function Register() {
+  const { setIsOnline } = useContext(UserContext);
   const [lastname, setLastname] = useState("");
   const [firstname, setFirstname] = useState("");
   const [address, setAddress] = useState("");
@@ -21,8 +23,9 @@ function Register() {
         Email: email,
         Password: password,
       })
-      .then(() => {
-        // console.log(response.data);
+      .then((res) => {
+        setIsOnline(res.data);
+        localStorage.setItem("user", JSON.stringify(res.data));
       })
       .then(() => {
         navigate("/MonCompteuser", { replace: true });

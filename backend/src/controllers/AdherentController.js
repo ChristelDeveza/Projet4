@@ -6,7 +6,7 @@ class UserController {
   // Register a user
   static register = async (req, res) => {
     const { Name, Firstname, Address, Email, Password } = req.body;
-    // TODO validations (length, format...)
+
     try {
       const hashedPassword = await argon2.hash(Password);
 
@@ -100,10 +100,29 @@ class UserController {
       });
   };
 
-  // Get user datas
+  // Get user datas without middleware
+  // static read = (req, res) => {
+  //   models.adherent
+  //     .find(req.params.id)
+  //     .then(([rows]) => {
+  //       if (rows[0] == null) {
+  //         res.sendStatus(404);
+  //       } else {
+  //         res.send(rows[0]);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //       res.sendStatus(500);
+  //     });
+  // };
+
+  // Get user datas with middleware
   static read = (req, res) => {
+    const id = req.userId;
+
     models.adherent
-      .find(req.params.id)
+      .find(id)
       .then(([rows]) => {
         if (rows[0] == null) {
           res.sendStatus(404);
@@ -135,9 +154,28 @@ class UserController {
   };
 
   // Update adherent datas
+  // static edit = (req, res) => {
+  //   const adherent = req.body;
+  //   adherent.id = parseInt(req.params.id, 10);
+
+  //   models.adherent
+  //     .update(adherent)
+  //     .then(([result]) => {
+  //       if (result.affectedRows === 0) {
+  //         res.sendStatus(404);
+  //       } else {
+  //         res.sendStatus(204);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //       res.sendStatus(500);
+  //     });
+  // };
+
+  // Update adherent datas with middleware
   static edit = (req, res) => {
     const adherent = req.body;
-    adherent.id = parseInt(req.params.id, 10);
 
     models.adherent
       .update(adherent)
@@ -185,6 +223,28 @@ class UserController {
         console.error(err);
         res.sendStatus(500);
       });
+  };
+
+  static authorization = (req, res, next) => {
+    const token = req.cookies.access_token;
+    if (!token) {
+      return res.sendStatus(401);
+    }
+    try {
+      const data = jwt.verify(token, process.env.JWT_AUTH_SECRET);
+      req.userId = data.id;
+      req.isCoach = data.isCoach;
+      return next();
+    } catch {
+      return res.sendStatus(401);
+    }
+  };
+
+  static isAdmin = (req, res, next) => {
+    if (req.isCoad === "isAdmin") {
+      return next();
+    }
+    return res.sendStatus(403);
   };
 }
 
