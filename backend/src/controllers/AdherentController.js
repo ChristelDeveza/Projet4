@@ -1,29 +1,20 @@
-const argon2 = require("argon2");
 const models = require("../models");
 
 class UserController {
   // Register a user
-  static register = async (req, res) => {
+  static register = (req, res) => {
     const { Name, Firstname, Address, Email, Password } = req.body;
     // TODO validations (length, format...)
-    try {
-      const hashedPassword = await argon2.hash(Password);
 
-      models.adherent
-        .insert({ Name, Firstname, Address, Email, Password: hashedPassword })
-        .then(([result]) => {
-          res.status(201).send({ ...result, id: result.insertId });
-        })
-        .catch((err) => {
-          console.error(err);
-          res.sendStatus(500);
-        });
-    } catch (err) {
-      console.error(err);
-      res.status(500).send({
-        error: "error",
+    models.adherent
+      .insert({ Name, Firstname, Address, Email, Password })
+      .then(([result]) => {
+        res.status(201).send({ ...result, id: result.insertId });
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
       });
-    }
   };
 
   static browse = (req, res) => {
