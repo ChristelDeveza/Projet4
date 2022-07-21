@@ -1,4 +1,5 @@
 const argon2 = require("argon2");
+const jwt = require("jsonwebtoken");
 const models = require("../models");
 
 class UserController {
@@ -24,6 +25,67 @@ class UserController {
         error: "error",
       });
     }
+  };
+
+  // user login
+
+  static login = (req, res) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      res
+        .status(400)
+        .send({ error: "Error, email and password must been specified" });
+    }
+
+    models.adherent
+      .findByMail(email)
+      .then(async ([rows]) => {
+        if (rows[0] == null) {
+          res.status(401).send({
+            error: "Invalid email",
+          });
+        } else {
+          const {
+            id,
+            Email: emailLogin,
+            Password: hashedPassword,
+            isCoach,
+          } = rows[0];
+
+          if (await argon2.verify(hashedPassword, password)) {
+            const token = jwt.sign(
+              { id, isCoach },
+              process.env.JWT_AUTH_SECRET,
+              {
+                expiresIn: "1h",
+              }
+            );
+
+            res
+              .cookie("access_token", token, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === "production",
+              })
+              .status(200)
+              .send({
+                id,
+                emailLogin,
+                isCoach,
+              });
+          } else {
+            res.status(401).send({
+              error: "Invalid password",
+            });
+          }
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send({
+          error: err.message,
+        });
+      });
   };
 
   static browse = (req, res) => {
