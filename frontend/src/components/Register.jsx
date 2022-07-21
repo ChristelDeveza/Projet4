@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import "../CSS/Register.css";
@@ -26,6 +27,11 @@ function Register() {
       .then((res) => {
         setIsOnline(res.data);
         localStorage.setItem("user", JSON.stringify(res.data));
+      })
+      .then(() => {
+        Swal.fire(
+          "Votre compte a bien été enregistré. Pour accéder à votre compte, merci de vous connecter."
+        );
       })
       .then(() => {
         navigate("/", { replace: true });

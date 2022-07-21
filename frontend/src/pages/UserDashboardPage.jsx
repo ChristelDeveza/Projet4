@@ -1,6 +1,7 @@
 /* eslint-disable no-shadow */
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import HeaderAccountUser from "../components/HeaderAccountUser";
@@ -69,6 +70,9 @@ function UserDashboardPage() {
           withCredentials: true,
         }
       )
+      .then(() => {
+        Swal.fire("Vos données personnelles ont bien été modifiées.");
+      })
       .catch((error) => console.error(error));
   }
 
@@ -90,6 +94,9 @@ function UserDashboardPage() {
         navigate("/MonCompte", { replace: true });
         setIsOnline(null);
         localStorage.setItem("user", null);
+      })
+      .then(() => {
+        Swal.fire("Vous êtes déconnecté");
       })
       .catch((err) => {
         if (err.response.status === 401) {
