@@ -7,6 +7,9 @@ const router = express.Router();
 // Route register
 router.post("/register", AdherentController.register);
 
+// Route login
+router.post("/login", AdherentController.login);
+
 // Route get subscription
 router.get("/usersubscription/:id", AdherentController.getSubscriptionByUser);
 
