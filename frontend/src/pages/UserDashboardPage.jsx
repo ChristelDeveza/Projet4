@@ -10,6 +10,8 @@ function UserDashboardPage() {
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [subscription, setSubscription] = useState([]);
+  const [programme, setProgramme] = useState();
+  const [programmeById, setProgrammeById] = useState();
   const id = 1;
 
   useEffect(() => {
@@ -37,6 +39,12 @@ function UserDashboardPage() {
         setSubscription(response.data);
       })
       .catch((error) => console.error(error));
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/programme`)
+      .then((response) => {
+        setProgramme(response.data);
+      })
+      .catch((error) => console.error(error));
   }, []);
 
   function handleSubmit(e) {
@@ -47,6 +55,15 @@ function UserDashboardPage() {
         Firstname: firstname,
         Address: address,
         Email: email,
+      })
+      .catch((error) => console.error(error));
+  }
+
+  function searchProgramm(e) {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/programme/${e.target.value}`)
+      .then((response) => {
+        setProgrammeById(response.data);
       })
       .catch((error) => console.error(error));
   }
@@ -156,12 +173,22 @@ function UserDashboardPage() {
             Choisissez un programme:
           </label>
 
-          <select name="pets" id="pet-select">
-            <option value="">--Choisir--</option>
-            <option value="Musculation">Musculation</option>
-            <option value="Cardio-training">Cardio-training</option>
-            <option value="Ligne">Ligne</option>
+          <select onChange={(e) => searchProgramm(e)}>
+            {programme &&
+              programme.map((element) => {
+                return (
+                  <option key={element.id} value={element.id}>
+                    {element.Name}
+                  </option>
+                );
+              })}
           </select>
+          {programmeById ? (
+            <div>
+              <h3>{programmeById.Name}</h3>
+              <p>{programmeById.Description}</p>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

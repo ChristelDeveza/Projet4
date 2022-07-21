@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { AdherentController } = require("./controllers");
+const { AdherentController, ProgrammeController } = require("./controllers");
 
 const router = express.Router();
 
@@ -10,8 +10,11 @@ router.post("/register", AdherentController.register);
 // Route get subscription
 router.get("/usersubscription/:id", AdherentController.getSubscriptionByUser);
 
-// Route get user programme
-router.get("/userprogramme", AdherentController.browse);
+// Route get programme
+router.get("/programme", AdherentController.browse);
+
+// Route get programme by id
+router.get("/programme/:id", ProgrammeController.getProgrammeById);
 
 // Route get one user datas
 router.get("/userdatas/:id", AdherentController.read);
