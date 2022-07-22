@@ -194,7 +194,7 @@ function SubscriptionPage() {
                 {data.advantages}
                 {data.description}
                 <div className="button-insc">
-                  <ButtonInscription path="/Moncompte" />
+                  <ButtonInscription />
                 </div>
               </ul>
             </div>

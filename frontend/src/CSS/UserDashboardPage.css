@@ -1,8 +1,8 @@
 .photo-home {
-  background-image: url("../assets/photo-home.jpg") ;
+  background-image: url("../assets/photo-home.jpg");
   background-size: cover;
-   height: 800px;
-   padding: 2rem;
+  height: 800px;
+  padding: 2rem;
 }
 
 .title-user-dashboard {
@@ -22,7 +22,6 @@
 .ec-box {
   display: flex;
   flex-direction: column;
-  
 }
 
 .label-input {
@@ -39,7 +38,7 @@
   font-size: 20px;
   font-weight: 300;
 }
- .box-entete {
+.box-entete {
   text-align: center;
   color: var(--prussian-blue);
 }
@@ -52,38 +51,95 @@
   transition: 400ms all;
   background-color: var(--prussian-blue);
   width: 7rem;
-  border: 2px solid;
+  border: 2px solid var(--orange);
   border-radius: 15px;
-  color:white;
+  color: white;
   cursor: pointer;
 }
 
- .subs-user-box {
+.subs-user-box {
   border-top: 2px solid var(--orange);
- }
+}
 
- .prog-user-box {
+.prog-user-box {
   border-top: 2px solid var(--orange);
- }
+}
 
- .btn-update {
-  margin:2rem ;
+.btn-update {
+  margin: 2rem;
   margin-left: 7rem;
- }
+}
 
- .subs-user-box {
+.subs-user-box {
+  display: flex;
+  flex-direction: column;
+  height: 520px;
+}
+
+.prog-user-box {
   display: flex;
   flex-direction: column;
   height: 500px;
- }
+}
 
- .prog-user-box {
-  display: flex;
-  flex-direction: column;
-  height: 500px;
- }
-
- .prog-select {
+.prog-select {
   color: var(--prussian-blue);
- }
-  
+}
+
+.disconnect-button {
+  background-color: white;
+  padding: 1rem;
+  font-weight: bold;
+  border: 3px solid white;
+  transition: 400ms all;
+  background-color: var(--orange);
+  width: 9rem;
+  border: 2px solid var(--prussian-blue);
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-disconnect {
+  margin: 2rem;
+  margin-left: 6rem;
+}
+
+.subs-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.subs-text-box {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15rem;
+  margin-right: 15rem;
+  border: 1px solid black;
+  padding: 2rem;
+  background-color: var(--prussian-blue);
+  color:white;
+}
+
+.entete-subs {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-align: center;
+}
+
+.subs-name {
+  font-size: x-large;
+  font-weight: bolder;
+ text-align: center;
+}
+
+.subs-price {
+  text-align: center;
+   font-size: large;
+  font-weight:bold;
+}
+
+.subs-detail {
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}
