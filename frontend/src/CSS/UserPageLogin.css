@@ -16,3 +16,10 @@
   cursor: pointer;
 }
 
+@media screen and (max-width:768px){
+  
+  .show-register-button {
+   margin-top: 8rem;
+   margin-left: 8rem;
+  }
+ }
