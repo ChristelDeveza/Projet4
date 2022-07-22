@@ -1,12 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
+
 import "../CSS/Register.css";
 
 function Register() {
-  const { setIsOnline } = useContext(UserContext);
   const [lastname, setLastname] = useState("");
   const [firstname, setFirstname] = useState("");
   const [address, setAddress] = useState("");
@@ -23,10 +22,6 @@ function Register() {
         Address: address,
         Email: email,
         Password: password,
-      })
-      .then((res) => {
-        setIsOnline(res.data);
-        localStorage.setItem("user", JSON.stringify(res.data));
       })
       .then(() => {
         Swal.fire(

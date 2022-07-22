@@ -6,11 +6,11 @@ function ButtonInscription() {
   return (
     <div>
       {" "}
-      <button className="btnH" type="button">
-        <Link to="MonCompte" className="text-decoration">
+      <Link to="/Moncompte" className="text-decoration">
+        <button className="btnH" type="button">
           M'INSCRIRE
-        </Link>
-      </button>
+        </button>
+      </Link>
     </div>
   );
 }

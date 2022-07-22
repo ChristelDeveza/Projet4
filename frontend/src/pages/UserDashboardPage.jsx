@@ -3,6 +3,8 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { GoFlame } from "react-icons/go";
+import { BiRun } from "react-icons/bi";
 import { UserContext } from "../context/UserContext";
 import HeaderAccountUser from "../components/HeaderAccountUser";
 import "../CSS/UserDashboardPage.css";
@@ -199,19 +201,39 @@ function UserDashboardPage() {
           </form>
         </div>
         <div className="subs-user-box">
-          <h2 className="box-entete">MON ABONNEMENT</h2>
+          <div>
+            <h2 className="box-entete">MON ABONNEMENT</h2>
 
-          {subscription ? (
-            <div>
-              <h3>
-                {subscription.firstname}, tu trouveras ci-après les conditions
-                et le détail de ton abonnement :
-              </h3>
-              {subscription.Name}
-              {subscription.Price}
-              {subscription.Description}
-            </div>
-          ) : null}
+            {subscription ? (
+              <div className="subs-text-box">
+                <h3 className="entete-subs">
+                  {subscription.firstname} tu trouveras ci-après les conditions
+                  et le détail de ton abonnement :
+                </h3>
+                <div className="subs-name">
+                  <h4>
+                    {" "}
+                    <BiRun />
+                    {subscription.Name}
+                  </h4>
+                </div>
+                <div className="subs-price">
+                  <h4>
+                    <GoFlame className="icon-flame" />
+                    Prix de l'abonnement : {subscription.Price},99 € pendant 6
+                    mois, puis 23,99 € les 6 autres mois
+                  </h4>
+                </div>
+                <div>
+                  <div className="subs-detail">
+                    Détail : <br />
+                  </div>
+                  <br />
+                  {subscription.Description}
+                </div>
+              </div>
+            ) : null}
+          </div>
         </div>
         <div className="prog-user-box">
           <h2 className="box-entete">MES PROGRAMMES</h2>

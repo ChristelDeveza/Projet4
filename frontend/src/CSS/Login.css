@@ -7,7 +7,7 @@
 }
 
 .login-form {
-  margin-top: 5rem;
+  margin-top: 2rem;
   background-color: var(--prussian-blue);
   height: 300px;
   width: 300px;
@@ -18,11 +18,12 @@
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
   padding: 50px 35px;
+  margin-bottom: 5rem;
 }
 
 .title-login {
   text-align: center;
-  color: var(--prussian-blue);
+  color: white;
 }
 
 .login-input {
