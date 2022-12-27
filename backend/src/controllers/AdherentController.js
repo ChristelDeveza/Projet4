@@ -244,7 +244,7 @@ class UserController {
 
   // IsAdmin function
   static isAdmin = (req, res, next) => {
-    if (req.isCoad === "isAdmin") {
+    if (req.isCoach === "isAdmin") {
       return next();
     }
     return res.sendStatus(403);

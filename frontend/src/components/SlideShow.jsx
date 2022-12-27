@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-shadow */
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../CSS/SlideShow.css";
 import muscu from "../assets/muscu.jpg";
 import cardio from "../assets/cardio.jpg";
@@ -33,8 +33,8 @@ function SlideShow() {
   ];
   const delay = 2500;
 
-  const [index, setIndex] = React.useState(0);
-  const timeoutRef = React.useRef(null);
+  const [index, setIndex] = useState(0);
+  const timeoutRef = useRef(null);
 
   function resetTimeout() {
     if (timeoutRef.current) {
@@ -42,7 +42,7 @@ function SlideShow() {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     resetTimeout();
     timeoutRef.current = setTimeout(
       () =>
