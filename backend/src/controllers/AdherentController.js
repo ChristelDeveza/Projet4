@@ -192,6 +192,7 @@ class UserController {
       });
   };
 
+  // à utiliser pour la création d'un programme par l'admin ou d'un abonnement
   static add = (req, res) => {
     const item = req.body;
 
@@ -225,6 +226,7 @@ class UserController {
       });
   };
 
+  // Middleware
   static authorization = (req, res, next) => {
     const token = req.cookies.access_token;
     if (!token) {
@@ -240,8 +242,9 @@ class UserController {
     }
   };
 
+  // IsAdmin function
   static isAdmin = (req, res, next) => {
-    if (req.isCoad === "isAdmin") {
+    if (req.isCoach === "isAdmin") {
       return next();
     }
     return res.sendStatus(403);
