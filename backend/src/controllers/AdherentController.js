@@ -5,13 +5,20 @@ const models = require("../models");
 class UserController {
   // Register a user
   static register = async (req, res) => {
-    const { Name, Firstname, Address, Email, Password } = req.body;
+    const { Name, Firstname, Address, Email, Password, IsCoach } = req.body;
 
     try {
       const hashedPassword = await argon2.hash(Password);
 
       models.adherent
-        .insert({ Name, Firstname, Address, Email, Password: hashedPassword })
+        .insert({
+          Name,
+          Firstname,
+          Address,
+          Email,
+          Password: hashedPassword,
+          IsCoach,
+        })
         .then(([result]) => {
           res.status(201).send({ ...result, id: result.insertId });
         })
@@ -50,12 +57,12 @@ class UserController {
             id,
             Email: emailLogin,
             Password: hashedPassword,
-            isCoach,
+            IsCoach,
           } = rows[0];
 
           if (await argon2.verify(hashedPassword, password)) {
             const token = jwt.sign(
-              { id, isCoach },
+              { id, IsCoach },
               process.env.JWT_AUTH_SECRET,
               {
                 expiresIn: "1h",
@@ -71,7 +78,7 @@ class UserController {
               .send({
                 id,
                 emailLogin,
-                isCoach,
+                IsCoach,
               });
           } else {
             res.status(401).send({
@@ -226,6 +233,19 @@ class UserController {
       });
   };
 
+  // Get all users admin only
+  static getAllUsers = (req, res) => {
+    models.adherent
+      .findAllUsers()
+      .then(([rows]) => {
+        res.send(rows);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
+
   // Middleware
   static authorization = (req, res, next) => {
     const token = req.cookies.access_token;
@@ -235,7 +255,7 @@ class UserController {
     try {
       const data = jwt.verify(token, process.env.JWT_AUTH_SECRET);
       req.userId = data.id;
-      req.isCoach = data.isCoach;
+      req.IsCoach = data.IsCoach;
       return next();
     } catch {
       return res.sendStatus(401);
@@ -244,7 +264,7 @@ class UserController {
 
   // IsAdmin function
   static isAdmin = (req, res, next) => {
-    if (req.isCoach === "isAdmin") {
+    if (req.IsCoach === 1) {
       return next();
     }
     return res.sendStatus(403);

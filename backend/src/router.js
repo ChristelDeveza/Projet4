@@ -1,7 +1,7 @@
 const express = require("express");
 
 const { AdherentController, ProgrammeController } = require("./controllers");
-const { authorization } = require("./controllers/AdherentController");
+const { authorization, isAdmin } = require("./controllers/AdherentController");
 
 const router = express.Router();
 
@@ -28,6 +28,9 @@ router.put("/userdatas", authorization, AdherentController.edit);
 
 // Route logout
 router.get("/logout", authorization, AdherentController.logout);
+
+// Route admin to access all users
+router.get("/admin", authorization, isAdmin, AdherentController.getAllUsers);
 
 // router.get("/items", ItemController.browse);
 // router.get("/items/:id", ItemController.read);
