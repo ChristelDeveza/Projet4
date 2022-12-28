@@ -14,6 +14,10 @@ class AbstractManager {
     return this.connection.query(`select * from  ${this.table}`);
   }
 
+  findAllUsers() {
+    return this.connection.query(`select * from  ${this.table}`);
+  }
+
   delete(id) {
     return this.connection.query(`delete from ${this.table} where id = ?`, [
       id,
