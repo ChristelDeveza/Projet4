@@ -18,7 +18,9 @@ function UserDashboardPage() {
   const [subscription, setSubscription] = useState([]);
   const [programme, setProgramme] = useState();
   const [programmeById, setProgrammeById] = useState();
+  const [role, setRole] = useState();
   const navigate = useNavigate();
+  const navAdmin = useNavigate();
   const { id } = isOnline;
 
   useEffect(() => {
@@ -32,11 +34,13 @@ function UserDashboardPage() {
           Firstname: firstname,
           Address: address,
           Email: email,
+          IsCoach: isCoach,
         } = response.data;
         setLastname(lastname);
         setFirstname(firstname);
         setAddress(address);
         setEmail(email);
+        setRole(isCoach);
       })
       .catch((error) => console.error(error));
   }, []);
@@ -105,6 +109,10 @@ function UserDashboardPage() {
           console.error(err);
         }
       });
+  }
+
+  function navigationAdmin() {
+    navAdmin("/AdminDashboard", { replace: true });
   }
 
   return (
@@ -200,6 +208,12 @@ function UserDashboardPage() {
             </div>
           </form>
         </div>
+
+        {role === 1 && (
+          <button type="button" onClick={navigationAdmin}>
+            Tableau de bord
+          </button>
+        )}
         <div className="subs-user-box">
           <div>
             <h2 className="box-entete">MON ABONNEMENT</h2>
