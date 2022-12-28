@@ -32,6 +32,9 @@ router.get("/logout", authorization, AdherentController.logout);
 // Route admin to access all users
 router.get("/admin", authorization, isAdmin, AdherentController.getAllUsers);
 
+// Route search pour l'Admin
+router.get("/search/admin", authorization, isAdmin, AdherentController.search);
+
 // router.get("/items", ItemController.browse);
 // router.get("/items/:id", ItemController.read);
 // router.put("/items/:id", ItemController.edit);
