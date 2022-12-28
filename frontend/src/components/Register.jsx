@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -6,22 +7,79 @@ import { useNavigate } from "react-router-dom";
 import "../CSS/Register.css";
 
 function Register() {
-  const [lastname, setLastname] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [address, setAddress] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [lastname, setLastname] = useState("");
+  // const [firstname, setFirstname] = useState("");
+  // const [address, setAddress] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+
+  const [values, setValues] = useState({
+    lastname: "",
+    firstname: "",
+    address: "",
+    email: "",
+    password: "",
+  });
+
+  const inputsArray = [
+    {
+      id: 1,
+      name: "lastname",
+      type: "text",
+      placeholder: "Nom",
+      label: "Nom",
+    },
+    {
+      id: 2,
+      name: "firstname",
+      type: "text",
+      placeholder: "Prénom",
+      label: "Prénom",
+    },
+    {
+      id: 3,
+      name: "address",
+      type: "text",
+      placeholder: "Adresse",
+      label: "Adresse",
+    },
+    {
+      id: 4,
+      name: "email",
+      type: "text",
+      placeholder: "E-mail",
+      label: "E-mail",
+    },
+    {
+      id: 5,
+      name: "password",
+      type: "password",
+      placeholder: "Mot de passe",
+      label: "Mot de passe",
+    },
+  ];
   const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (
+      !values.lastname ||
+      !values.firstname ||
+      !values.address ||
+      !values.email ||
+      !values.password
+    ) {
+      Swal.fire("Afin de vous inscrire, merci de compléter tous les champs");
+      return;
+    }
+
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/register`, {
-        Name: lastname,
-        Firstname: firstname,
-        Address: address,
-        Email: email,
-        Password: password,
+        Name: values.lastname,
+        Firstname: values.firstname,
+        Address: values.address,
+        Email: values.email,
+        Password: values.password,
       })
       .then(() => {
         Swal.fire(
@@ -37,7 +95,30 @@ function Register() {
   return (
     <div className="register">
       <h1 className="title-register">CREER UN COMPTE</h1>
+
       <form onSubmit={handleSubmit} className="register-form">
+        {inputsArray.map((input) => (
+          <div key={input.id}>
+            <label htmlFor="name"> {input.label}</label>
+            <input
+              className="register-input"
+              {...input}
+              value={values[input.name]}
+              onChange={(e) =>
+                setValues({ ...values, [e.target.name]: e.target.value })
+              }
+            />
+          </div>
+        ))}
+        <button
+          className="register-button"
+          type="button"
+          onClick={handleSubmit}
+        >
+          ENREGISTRER
+        </button>
+      </form>
+      {/* <form onSubmit={handleSubmit} className="register-form">
         <label htmlFor="name">Nom :</label>
         <input
           className="register-input"
@@ -94,7 +175,7 @@ function Register() {
         >
           ENREGISTRER
         </button>
-      </form>
+      </form> */}
     </div>
   );
 }
