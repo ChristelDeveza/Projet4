@@ -43,6 +43,14 @@ class UserManager extends AbstractManager {
       email,
     ]);
   }
+
+  search(searchvalue) {
+    const searchword = `%${searchvalue}%`;
+    return this.connection.query(
+      `SELECT * FROM ${this.table} WHERE Email LIKE ? OR Firstname LIKE ? OR Name LIKE ?`,
+      [searchword, searchword, searchword]
+    );
+  }
 }
 
 module.exports = UserManager;

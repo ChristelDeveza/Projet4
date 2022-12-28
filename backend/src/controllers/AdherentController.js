@@ -246,6 +246,20 @@ class UserController {
       });
   };
 
+  // Search users by admin only
+  static search = (req, res) => {
+    const { searchValue } = req.query;
+    models.adherent
+      .search(searchValue)
+      .then(([rows]) => {
+        res.send(rows);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
+
   // Middleware
   static authorization = (req, res, next) => {
     const token = req.cookies.access_token;
