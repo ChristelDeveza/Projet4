@@ -1,76 +1,91 @@
 .register {
   /* background-color: var(--lemon-meringue); */
-   color: white;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
- }
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
- label {
-  color:white;
- }
- 
- .register-form {
-   margin-top: 2rem;
-   background-color: var(--prussian-blue);
-   height: 500px;
-   width: 300px;
-   top: 50%;
-   left: 50%;
-   border-radius: 10px;
-   backdrop-filter: blur(10px);
-   border: 2px solid rgba(255, 255, 255, 0.1);
-   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-   padding: 50px 35px;
-   margin-bottom: 5rem;
- }
- 
- .title-register {
-   text-align: center;
-   color: white;
- }
- 
- .register-input {
-   display: block;
-   height: 50px;
-   width: 90%;
-   background-color: var(--lemon-meringue);
-   border-radius: 3px;
-   padding: 0 10px;
-   margin-top: 8px;
-   font-size: 20px;
-   font-weight: 300;
- }
- 
- .register-button {
-   margin-top: 50px;
-   width: 100%;
-   background-color: var(--lemon-meringue);
-   color: #080710;
-   padding: 15px 0;
-   font-size: 18px;
-   font-weight: 600;
-   border-radius: 5px;
-   cursor: pointer;
- }
- 
- .register-button:hover {
-   background-color: var(--maximum-yellow-red);
- }
- 
- .end-register-page {
-   text-align: center;
- }
- 
- .end-register-page {
-   color: var(--prussian-blue);
-   font-weight: bold;
- }
- 
- .new-account-link {
-   text-decoration: none;
-   color: var(--prussian-blue);
-   font-size: larger;
-   font-weight: bolder;
- }
- 
+label {
+  color: black;
+}
+
+
+.register-form {
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 5px solid var(--prussian-blue);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 10px 60px;
+}
+
+.title-register {
+  text-align: center;
+  color: white;
+}
+
+.register-input {
+  display: block;
+  height: 50px;
+  width: 90%;
+  background-color: var(--lemon-meringue);
+  border-radius: 3px;
+  padding: 0 15px;
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.register-button {
+  margin-top: 15px;
+  margin-bottom: 30px;
+  width: 100%;
+  background-color: var(--lemon-meringue);
+  color: #080710;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  }
+
+.register-button:hover {
+  background-color: var(--maximum-yellow-red);
+}
+
+.end-register-page {
+  text-align: center;
+}
+
+.end-register-page {
+  color: var(--prussian-blue);
+  font-weight: bold;
+}
+
+.new-account-link {
+  text-decoration: none;
+  color: var(--prussian-blue);
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.errorMsg {
+  font-size: 12px;
+  padding: 3px;
+  color: red;
+  display: none;
+}
+
+input:invalid[focus="true"] {
+  border: 1px solid red;
+}
+
+input:valid[focus="true"] {
+  border: 1px solid green;
+}
+input:invalid[focus="true"] ~ span {
+  display: block;
+}
