@@ -35,6 +35,14 @@ router.get("/admin", authorization, isAdmin, AdherentController.getAllUsers);
 // Route search pour l'Admin
 router.get("/search/admin", authorization, isAdmin, AdherentController.search);
 
+// Route pour supprimer un membre par l'admin
+router.delete(
+  "/members/:id",
+  authorization,
+  isAdmin,
+  AdherentController.delete
+);
+
 // router.get("/items", ItemController.browse);
 // router.get("/items/:id", ItemController.read);
 // router.put("/items/:id", ItemController.edit);
