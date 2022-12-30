@@ -1,6 +1,7 @@
 .loginpage {
   background-image: url("../assets/muscu.jpg");
   background-size: cover;
+  height: 100vh;
 }
 
 .show-register-button {

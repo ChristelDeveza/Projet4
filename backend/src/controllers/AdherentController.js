@@ -7,6 +7,11 @@ class UserController {
   static register = async (req, res) => {
     const { Name, Firstname, Address, Email, Password, IsCoach } = req.body;
 
+    if (!Name || !Firstname || !Address || !Email || !Password) {
+      res.status(400).send("Please specify all");
+      return;
+    }
+
     try {
       const hashedPassword = await argon2.hash(Password);
 
