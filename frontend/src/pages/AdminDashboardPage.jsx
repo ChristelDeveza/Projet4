@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Filter from "../components/Filter";
 import SearchAdmin from "../components/SearchAdmin";
 import Count from "../components/Count";
+import CardAdherentList from "../components/CardAdherentList";
 
 function AdminDashboardPage() {
   const [adherentList, setAdherentList] = useState([]);
@@ -66,10 +68,89 @@ function AdminDashboardPage() {
       });
   }
 
+  // filter abonnement search admin
+  const abonnement = [1, 2, 3];
+
+  const [checkedAbonnement, setCheckedAbonnement] = useState(
+    new Array(abonnement.length).fill(false)
+  );
+
+  let updateDatas = [...adherentList];
+
+  function handleFilter() {
+    // if one Abonnement checked only
+    if (checkedAbonnement[0] || checkedAbonnement[1] || checkedAbonnement[2]) {
+      updateDatas = adherentList.filter((data) => {
+        // console.log(
+        //   "Abonnement ValueOf",
+        //   abonnement[0].valueOf(),
+        //   "Is_Abonnement",
+        //   data.Is_Abonnement
+        // );
+        return (
+          (data.Is_Abonnement === abonnement[0].valueOf() &&
+            checkedAbonnement[0]) ||
+          (data.Is_Abonnement === abonnement[1].valueOf() &&
+            checkedAbonnement[1]) ||
+          (data.Is_Abonnement === abonnement[2].valueOf() &&
+            checkedAbonnement[2])
+        );
+      });
+    }
+    // if Abonnement1 et Abonnement2 checked
+    if (checkedAbonnement[0] && checkedAbonnement[1]) {
+      updateDatas = adherentList.filter((data) => {
+        return (
+          (data.Is_Abonnement === abonnement[0].valueOf() &&
+            checkedAbonnement[0]) ||
+          (data.Is_Abonnement === abonnement[1].valueOf() &&
+            checkedAbonnement[1])
+        );
+      });
+    }
+
+    // if Abonnement1 et Abonnement3 checked
+    if (checkedAbonnement[0] && checkedAbonnement[2]) {
+      updateDatas = adherentList.filter((data) => {
+        return (
+          (data.Is_Abonnement === abonnement[0].valueOf() &&
+            checkedAbonnement[0]) ||
+          (data.Is_Abonnement === abonnement[2].valueOf() &&
+            checkedAbonnement[2])
+        );
+      });
+    }
+
+    // if Abonnement1, Abonnement2 et Abonnement3 checked
+    if (checkedAbonnement[0] && checkedAbonnement[2] && checkedAbonnement[2]) {
+      updateDatas = adherentList.filter((data) => {
+        return (
+          (data.Is_Abonnement === abonnement[0].valueOf() &&
+            checkedAbonnement[0]) ||
+          (data.Is_Abonnement === abonnement[1].valueOf() &&
+            checkedAbonnement[1]) ||
+          (data.Is_Abonnement === abonnement[2].valueOf() &&
+            checkedAbonnement[2])
+        );
+      });
+    }
+    return updateDatas;
+  }
+
+  const filterAbonnementArray = (position) => {
+    const updatedCheckedAbonnement = checkedAbonnement.map((item, index) =>
+      index === position ? !item : item
+    );
+    setCheckedAbonnement(updatedCheckedAbonnement);
+    handleFilter(updatedCheckedAbonnement);
+  };
+
+  handleFilter();
+
   return (
-    <div>
+    <div style={{ marginLeft: "50px" }}>
       <h1>Tableau de bord</h1>
-      <div>
+      <div style={{ marginTop: "100px" }}>
         <SearchAdmin
           searchValue={searchValue}
           setSearchValue={setSearchValue}
@@ -84,21 +165,16 @@ function AdminDashboardPage() {
           Nouveaux adhérents
         </button>
       </div>
-      <div>
-        {adherentList.map((adherent) => (
-          <div>
-            <p>
-              {adherent.Name}
-              {adherent.Firstname}
-              {adherent.Address}
-              {adherent.Email}
-              {adherent.Is_Abonnement}
-            </p>
-          </div>
-        ))}
-      </div>
 
       <Count adherentList={adherentList} />
+
+      <Filter
+        abonnement={abonnement}
+        checkedAbonnement={checkedAbonnement}
+        filterAbonnementArray={filterAbonnementArray}
+      />
+
+      <CardAdherentList updateDatas={updateDatas} />
     </div>
   );
 }
