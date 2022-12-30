@@ -1,5 +1,7 @@
+/* eslint-disable react/jsx-no-bind */
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 import Filter from "../components/Filter";
 import SearchAdmin from "../components/SearchAdmin";
 import Count from "../components/Count";
@@ -147,6 +149,37 @@ function AdminDashboardPage() {
 
   handleFilter();
 
+  // Delete a member
+  function deleteCardAdherent(id) {
+    Swal.fire({
+      title: "Êtes-vous sûr de vouloir supprimer ce membre ?",
+      text: "Cette action est irréversible !",
+      icon: "warning",
+      position: "center",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Annuler!",
+      confirmButtonText: "Oui, supprimer!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`${import.meta.env.VITE_BACKEND_URL}/members/${id}`, {
+            withCredentials: true,
+          })
+          .catch((error) => {
+            console.error(error);
+            Swal.fire("Erreur lors de la suppression du membre.");
+          });
+        Swal.fire(
+          "Supprimé !",
+          "Le membre a bien été supprimé.",
+          "success"
+        ).then(() => window.location.reload());
+      }
+    });
+  }
+
   return (
     <div style={{ marginLeft: "50px" }}>
       <h1>Tableau de bord</h1>
@@ -174,7 +207,10 @@ function AdminDashboardPage() {
         filterAbonnementArray={filterAbonnementArray}
       />
 
-      <CardAdherentList updateDatas={updateDatas} />
+      <CardAdherentList
+        updateDatas={updateDatas}
+        deleteCardAdherent={deleteCardAdherent}
+      />
     </div>
   );
 }

@@ -226,8 +226,9 @@ class UserController {
     return res.clearCookie("access_token").sendStatus(200);
   };
 
+  // Delete adherent with id by admin only
   static delete = (req, res) => {
-    models.item
+    models.adherent
       .delete(req.params.id)
       .then(() => {
         res.sendStatus(204);
