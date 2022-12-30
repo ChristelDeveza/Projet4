@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import "../CSS/Login.css";
@@ -33,7 +34,12 @@ function Login() {
         })
         .catch((err) => {
           console.error(err);
+          Swal.fire("Identifiant ou mot de passe invalide.");
         });
+    } else {
+      Swal.fire(
+        "Veuillez renseigner votre adresse e-mail ainsi que votre mot de passe."
+      );
     }
   }
 
