@@ -4,12 +4,23 @@ import React from "react";
 import CardAdherent from "./CardAdherent";
 
 function CardAdherentList(props) {
-  const { updateDatas } = props;
+  const { updateDatas, deleteCardAdherent } = props;
   return (
     <div>
       {" "}
       {updateDatas.map((data) => (
-        <CardAdherent key={data.id} {...data} />
+        <>
+          <CardAdherent key={data.id} {...data} />
+          <button
+            type="button"
+            className="deleteBtn"
+            onClick={() => {
+              deleteCardAdherent(data.id);
+            }}
+          >
+            x
+          </button>
+        </>
       ))}
     </div>
   );
