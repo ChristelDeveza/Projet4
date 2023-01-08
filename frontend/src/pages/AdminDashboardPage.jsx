@@ -1,16 +1,22 @@
 /* eslint-disable react/jsx-no-bind */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Filter from "../components/Filter";
 import SearchAdmin from "../components/SearchAdmin";
 import Count from "../components/Count";
 import CardAdherentList from "../components/CardAdherentList";
+import "../CSS/AdminDashboardPage.css";
+import muscu from "../assets/muscu.jpg";
+import { UserContext } from "../context/UserContext";
 
 function AdminDashboardPage() {
+  const { setIsOnline } = useContext(UserContext);
   const [adherentList, setAdherentList] = useState([]);
   const [searchValue, setSearchValue] = useState();
   const [adherentCount, setAdherentCount] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -182,37 +188,91 @@ function AdminDashboardPage() {
     });
   }
 
+  function logout() {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/logout`, {
+        withCredentials: true,
+      })
+      .then(() => {
+        navigate("/MonCompte", { replace: true });
+        setIsOnline(null);
+        localStorage.setItem("user", null);
+      })
+      .then(() => {
+        Swal.fire("Vous êtes déconnecté");
+      })
+      .catch((err) => {
+        if (err.response.status === 401) {
+          console.error(err);
+        }
+      });
+  }
+
   return (
-    <div style={{ marginLeft: "50px" }}>
-      <h1>Tableau de bord</h1>
-      <div style={{ marginTop: "100px" }}>
-        <SearchAdmin
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-        />
-        <button type="button" onClick={handleSubmit}>
-          Rechercher
-        </button>
-        <button type="button" onClick={backToList}>
-          Back to list
-        </button>
-        <button type="button" onClick={getNewAdherentList}>
-          Nouveaux adhérents
-        </button>
+    <div className="adminDashboard">
+      <img className="img-dashboard-page" src={muscu} alt="muscu" />
+      <div className="header-dashboard-page">
+        <h2>TABLEAU DE BORD</h2>
       </div>
 
-      <Count adherentCount={adherentCount} />
+      <div className="dashboard-container">
+        <div className="box-division list">
+          <div className="box-filter">
+            <div className="searchBar-box">
+              <SearchAdmin
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+              />
+              <div className="box-btn">
+                <button
+                  className="btn-dashboard search"
+                  type="button"
+                  onClick={handleSubmit}
+                >
+                  RECHERCHER
+                </button>
+                <button
+                  className="btn-dashboard all"
+                  type="button"
+                  onClick={backToList}
+                >
+                  TOUS
+                </button>
+                <button
+                  className="btn-dashboard new"
+                  type="button"
+                  onClick={getNewAdherentList}
+                >
+                  NOUVEAUX
+                </button>
+                <button className="btn-dashboard create" type="button">
+                  CREER
+                </button>
+                <button
+                  className="disconnect-button"
+                  type="button"
+                  onClick={logout}
+                >
+                  SE DECONNECTER
+                </button>
+              </div>
+            </div>
 
-      <Filter
-        abonnement={abonnement}
-        checkedAbonnement={checkedAbonnement}
-        filterAbonnementArray={filterAbonnementArray}
-      />
-
-      <CardAdherentList
-        updateDatas={updateDatas}
-        deleteCardAdherent={deleteCardAdherent}
-      />
+            <Filter
+              abonnement={abonnement}
+              checkedAbonnement={checkedAbonnement}
+              filterAbonnementArray={filterAbonnementArray}
+            />
+          </div>
+          <CardAdherentList
+            updateDatas={updateDatas}
+            deleteCardAdherent={deleteCardAdherent}
+          />
+        </div>
+        <div className="box-division count">
+          <Count adherentCount={adherentCount} />
+        </div>
+      </div>
     </div>
   );
 }

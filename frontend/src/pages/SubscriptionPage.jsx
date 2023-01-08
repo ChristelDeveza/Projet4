@@ -173,11 +173,9 @@ function SubscriptionPage() {
 
   return (
     <div className="subscription-page">
-      <div className="img-subscription">
-        <img className="img-subscription-page" src={muscu} alt="muscu" />
-        <div className="header-subscription-page">
-          <h2>NOS ABONNEMENTS</h2>
-        </div>
+      <img className="img-subscription-page" src={muscu} alt="muscu" />
+      <div className="header-subscription-page">
+        <h2>NOS ABONNEMENTS</h2>
       </div>
 
       <div className="subscription-page-container">

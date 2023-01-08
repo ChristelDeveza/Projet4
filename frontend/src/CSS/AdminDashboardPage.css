@@ -1,0 +1,147 @@
+.img-dashboard-page {
+  background-size: cover;
+  width: 202vh;
+  height: 600px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.header-dashboard-page {
+  position: absolute;
+  margin-left: 50rem;
+  margin-right: 50rem;
+  text-align: center;
+
+  top: 230px;
+  color: white;
+  font-size: xx-large;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid black;
+  color:var(--prussian-blue)
+}
+
+.box-division {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin: 10px;
+}
+
+.list {
+  width: 75%;
+}
+
+.count {
+  width: 25%;
+}
+.box-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.checkbox-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.checkbox-filter h3 {
+  text-align: center;
+}
+
+.li-checkbox {
+  list-style: none;
+}
+
+.count-box {
+  text-align: center;
+}
+
+.display-adherent {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.searchbar {
+  background-color: var(--lemon-meringue);
+  padding: 1rem;
+  width: 37rem;
+  height: 1.5rem;
+  border-radius: 15px;
+  font-size: larger;
+}
+
+.searchBar-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.title-filter {
+  text-align: center;
+}
+
+.title-search {
+  text-align: center;
+}
+
+.box-btn {
+  display: flex;
+  gap: 5px;
+}
+
+.btn-dashboard {
+  width: 7rem;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: antiquewhite;
+}
+
+.search {
+  background-color: var(--maximum-yellow-red);
+  width: 9rem;
+}
+
+.all {
+  background-color: var(--maximum-red);
+}
+
+.new {
+  background-color: var(--prussian-blue);
+}
+
+.create {
+  color: black;
+}
+
+.cardList {
+  margin: 2rem;
+}
+
+.card {
+  margin: 3px;
+  border: 1px solid black;
+  min-width: 60rem;
+  height: 2rem;
+}
+
+.countNumber {
+  font-size: 50px;
+}
+
+.deleteBtn-list {
+  background-color: var(--maximum-red);
+}

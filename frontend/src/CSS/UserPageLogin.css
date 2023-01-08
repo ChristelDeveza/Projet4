@@ -2,25 +2,25 @@
   background-image: url("../assets/muscu.jpg");
   background-size: cover;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .show-register-button {
-  margin-top: 7rem;
-  margin-left:43rem;
   color: white;
   background-color: transparent;
   border: 2px solid;
-  width: 9rem;
   background-color: var(--prussian-blue);
   border-radius: 15px;
-  padding: 0.5rem;
+  padding: 1rem;
   cursor: pointer;
 }
 
-@media screen and (max-width:768px){
-  
+@media screen and (max-width: 768px) {
   .show-register-button {
-   margin-top: 8rem;
-   margin-left: 8rem;
+    margin-top: 8rem;
+    margin-left: 8rem;
   }
- }
+}

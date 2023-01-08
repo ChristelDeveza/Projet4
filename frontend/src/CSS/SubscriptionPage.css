@@ -8,23 +8,23 @@
 }
 
 .img-subscription-page {
-  margin-top: 0;
   background-size: cover;
   width: 202vh;
-  height: 600px;
+  height: 650px;
 }
 
-.img-subscription {
-  position: relative;
+h2 {
+  text-align: center;
 }
 
 .header-subscription-page {
   position: absolute;
-  left: 550px;
+  margin-left: 50rem;
+  margin-right: 50rem;
+  text-align: center;
+  /* left: 550px; */
   top: 230px;
   color: white;
-  padding-left: 20px;
-  padding-right: 20px;
   font-size: xx-large;
 }
 
@@ -59,31 +59,22 @@
   border-top: 3px dotted var(--maximum-yellow-red);
 }
 
-@media screen and (max-width:768px){
+@media screen and (max-width: 768px) {
   .img-subscription-page {
     margin-top: 0;
     background-size: cover;
     width: 400px;
     height: 400px;
   }
-  
-  .img-subscription {
-    position: relative;
-  }
-  
+
   .header-subscription-page {
     position: absolute;
-    left: 70px;
-    top: 100px;
     color: white;
-    padding-left: 20px;
-    padding-right: 20px;
     font-size: x-large;
-  } 
+  }
 
   .subscription-page-container {
     margin-right: 2.5rem;
+   
   }
-  
 }
-

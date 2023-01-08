@@ -6,21 +6,22 @@ import CardAdherent from "./CardAdherent";
 function CardAdherentList(props) {
   const { updateDatas, deleteCardAdherent } = props;
   return (
-    <div>
+    <div className="cardList">
       {" "}
+      <h4>Liste des adhérents</h4>
       {updateDatas.map((data) => (
-        <>
+        <div className="display-adherent">
           <CardAdherent key={data.id} {...data} />
           <button
             type="button"
-            className="deleteBtn"
+            className="deleteBtn-list"
             onClick={() => {
               deleteCardAdherent(data.id);
             }}
           >
-            x
+            X
           </button>
-        </>
+        </div>
       ))}
     </div>
   );

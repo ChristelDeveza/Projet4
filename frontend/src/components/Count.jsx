@@ -17,20 +17,20 @@ function Count({ adherentCount }) {
   ).length;
 
   return (
-    <div>
+    <div className="count-box">
       <h3>Souscriptions</h3>
       <h4>Nombre d'adhérents</h4>
-      {numberAdherent}
+      <p className="countNumber">{numberAdherent}</p>
       <br />
       <h4>Nouveaux adhérents - En cours de souscription</h4>
-      {numberNewAdherent}
+      <p className="countNumber">{numberNewAdherent}</p>
       <h4>Nombre d'adhérents par abonnement souscrit</h4>
-      <h5>Abonnement 1</h5>
-      {numberAdherentAbonnement1}
-      <h5>Abonnement 2</h5>
-      {numberAdherentAbonnement2}
-      <h5>Abonnement 3</h5>
-      {numberAdherentAbonnement3}
+      <h5>Abonnement 1 - Cheap</h5>
+      <p className="countNumber">{numberAdherentAbonnement1}</p>
+      <h5>Abonnement 2 - Fit</h5>
+      <p className="countNumber">{numberAdherentAbonnement2}</p>
+      <h5>Abonnement 3 - Gold</h5>
+      <p className="countNumber">{numberAdherentAbonnement3}</p>
     </div>
   );
 }
