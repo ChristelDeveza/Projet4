@@ -4,6 +4,7 @@ import muscu from "../assets/muscu.jpg";
 import cardio from "../assets/cardio.jpg";
 import collectif from "../assets/cours-collectifs.jpg";
 import yoga from "../assets/yoga.jpg";
+import muscu2 from "../assets/muscu2.jpg";
 
 function ActivitiesPage() {
   const activitiesList = [
@@ -165,7 +166,11 @@ function ActivitiesPage() {
   ];
   return (
     <div className="activities">
-      <h2 className="header-activities">NOS ACTIVITES</h2>
+      <img className="img-subscription-page" src={muscu2} alt="muscu" />
+      <div className="header-subscription-page">
+        <h2>NOS ACTIVITES</h2>
+      </div>
+
       <div className="box">
         {activitiesList.map((data) => {
           return (

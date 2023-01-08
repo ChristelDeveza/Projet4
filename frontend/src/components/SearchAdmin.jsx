@@ -4,6 +4,7 @@ import React from "react";
 function SearchAdmin({ searchValue, setSearchValue }) {
   return (
     <div>
+      <h3 className="title-search">Rechercher</h3>
       <input
         className="searchbar"
         value={searchValue}
