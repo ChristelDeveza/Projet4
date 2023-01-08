@@ -1,18 +1,18 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
-function Count({ adherentList }) {
-  const numberAdherent = adherentList.map((element) => element).length;
-  const numberNewAdherent = adherentList.filter(
+function Count({ adherentCount }) {
+  const numberAdherent = adherentCount.map((element) => element).length;
+  const numberNewAdherent = adherentCount.filter(
     (element) => element.Is_Abonnement === 0
   ).length;
-  const numberAdherentAbonnement1 = adherentList.filter(
+  const numberAdherentAbonnement1 = adherentCount.filter(
     (element) => element.Is_Abonnement === 1
   ).length;
-  const numberAdherentAbonnement2 = adherentList.filter(
+  const numberAdherentAbonnement2 = adherentCount.filter(
     (element) => element.Is_Abonnement === 2
   ).length;
-  const numberAdherentAbonnement3 = adherentList.filter(
+  const numberAdherentAbonnement3 = adherentCount.filter(
     (element) => element.Is_Abonnement === 3
   ).length;
 
