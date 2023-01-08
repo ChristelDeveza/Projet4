@@ -10,6 +10,7 @@ import CardAdherentList from "../components/CardAdherentList";
 function AdminDashboardPage() {
   const [adherentList, setAdherentList] = useState([]);
   const [searchValue, setSearchValue] = useState();
+  const [adherentCount, setAdherentCount] = useState([]);
 
   useEffect(() => {
     axios
@@ -22,6 +23,7 @@ function AdminDashboardPage() {
       )
       .then((response) => {
         setAdherentList(response.data);
+        setAdherentCount(response.data);
       });
   }, []);
 
@@ -199,7 +201,7 @@ function AdminDashboardPage() {
         </button>
       </div>
 
-      <Count adherentList={adherentList} />
+      <Count adherentCount={adherentCount} />
 
       <Filter
         abonnement={abonnement}
