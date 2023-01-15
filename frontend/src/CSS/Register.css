@@ -1,18 +1,17 @@
 .register {
-  /* background-color: var(--lemon-meringue); */
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-label {
-  color: black;
+.label-register {
+  color: var(--prussian-blue);
 }
-
 
 .register-form {
   background-color: white;
+  width: 55vh;
   top: 50%;
   left: 50%;
   border-radius: 10px;
@@ -20,6 +19,11 @@ label {
   border: 5px solid var(--prussian-blue);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
   padding: 10px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title-register {
@@ -30,7 +34,7 @@ label {
 .register-input {
   display: block;
   height: 50px;
-  width: 90%;
+  width: 40rem;
   background-color: var(--lemon-meringue);
   border-radius: 3px;
   padding: 0 15px;
@@ -42,7 +46,6 @@ label {
 .register-button {
   margin-top: 15px;
   margin-bottom: 30px;
-  width: 100%;
   background-color: var(--lemon-meringue);
   color: #080710;
   padding: 15px;
@@ -50,7 +53,7 @@ label {
   font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
-  }
+}
 
 .register-button:hover {
   background-color: var(--maximum-yellow-red);
@@ -89,3 +92,17 @@ input:valid[focus="true"] {
 input:invalid[focus="true"] ~ span {
   display: block;
 }
+
+@media screen and (max-width: 768px) {
+  .register-input {
+  width:20rem;
+  }
+
+.register-form {
+    width: 250px;
+  justify-content: space-evenly;
+  } 
+
+ 
+}
+

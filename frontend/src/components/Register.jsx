@@ -98,6 +98,16 @@ function Register() {
       return;
     }
 
+    if (
+      values.lastname.match(inputsArray[0].pattern) === null ||
+      values.firstname.match(inputsArray[1].pattern) === null ||
+      values.address.match(inputsArray[2].pattern) === null ||
+      values.email.match(inputsArray[3].pattern) === null ||
+      values.password.match(inputsArray[4].pattern) === null
+    ) {
+      Swal.fire("Champ incorrect, merci de modifier");
+      return;
+    }
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/register`, {
         Name: values.lastname,
@@ -124,7 +134,10 @@ function Register() {
       <form onSubmit={handleSubmit} className="register-form">
         {inputsArray.map((input) => (
           <div key={input.id}>
-            <label htmlFor="name"> {input.label}</label>
+            <label htmlFor="name" className="label-register">
+              {" "}
+              {input.label}
+            </label>
             <input
               className="register-input"
               {...input}

@@ -1,5 +1,4 @@
 .login {
- /* background-color: var(--lemon-meringue); */
   color: white;
   display: flex;
   flex-direction: row;
@@ -7,7 +6,6 @@
 }
 
 .login-form {
-  margin-top: 2rem;
   background-color: var(--prussian-blue);
   height: 300px;
   width: 300px;
@@ -18,7 +16,10 @@
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
   padding: 50px 35px;
-  margin-bottom: 5rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title-login {
@@ -38,9 +39,14 @@
   font-weight: 300;
 }
 
+.login-box {
+  display: flex;
+  flex-direction: column;
+}
+
 .login-button {
   margin-top: 50px;
-  width: 100%;
+  width: 60%;
   background-color: var(--lemon-meringue);
   color: #080710;
   padding: 15px 0;
@@ -68,4 +74,10 @@
   color: var(--prussian-blue);
   font-size: larger;
   font-weight: bolder;
+}
+
+@media screen and (max-width: 768px) {
+  .show-register-button {
+    margin-top: 10rem;
+  }
 }
