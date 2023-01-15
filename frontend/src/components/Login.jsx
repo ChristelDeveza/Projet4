@@ -48,25 +48,29 @@ function Login() {
       <section>
         <h1 className="title-login">SE CONNECTER</h1>
         <form onSubmit={handleSubmit} className="login-form">
-          <label htmlFor="email">E-mail :</label>
-          <input
-            className="login-input"
-            type="text"
-            id="email"
-            autoComplete="off"
-            onChange={(e) => setUser(e.target.value)}
-            value={user}
-            required
-          />
-          <label htmlFor="password">Mot de passe :</label>
-          <input
-            className="login-input"
-            type="password"
-            id="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            required
-          />
+          <div className="login-box">
+            <label htmlFor="email">E-mail :</label>
+
+            <input
+              className="login-input"
+              type="text"
+              id="email"
+              autoComplete="off"
+              onChange={(e) => setUser(e.target.value)}
+              value={user}
+              required
+            />
+            <label htmlFor="password">Mot de passe :</label>
+            <input
+              className="login-input"
+              type="password"
+              id="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              required
+            />
+          </div>
+
           <button className="login-button" type="button" onClick={handleSubmit}>
             SE CONNECTER
           </button>

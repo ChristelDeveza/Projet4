@@ -6,7 +6,7 @@ import "../CSS/Footer.css";
 
 function Footer() {
   return (
-    <div className="footer">
+    <div className="footer" id="footer-register">
       <h2 className="contact">Nous contacter</h2>
       <p className="pContact">
         <AiFillMail /> rue des Fleurs, 00000 VILLE
