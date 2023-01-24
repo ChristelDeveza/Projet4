@@ -9,6 +9,7 @@
 
 .img-subscription-page {
   background-size: cover;
+  object-fit: cover;
   width: 202vh;
   height: 650px;
 }
@@ -75,6 +76,5 @@ h2 {
 
   .subscription-page-container {
     margin-right: 2.5rem;
-   
   }
 }

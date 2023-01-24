@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .show-register-button {
@@ -19,9 +19,8 @@
 }
 
 @media screen and (max-width: 768px) {
-  .show-register-button {
-    margin-top: 8rem;
-
-    
+  #registerpage {
+    width: 390px;
+    height: 930px;
   }
 }

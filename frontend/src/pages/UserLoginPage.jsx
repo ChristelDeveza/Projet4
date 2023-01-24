@@ -12,7 +12,7 @@ function UserLoginPage() {
   }
 
   return (
-    <div className="loginpage">
+    <div className="loginpage" id={!loginChoice ? "loginpage" : "registerpage"}>
       <button
         className="show-register-button"
         type="button"
