@@ -34,12 +34,18 @@ function Login() {
         })
         .catch((err) => {
           console.error(err);
-          Swal.fire("Identifiant ou mot de passe invalide.");
+          Swal.fire({
+            icon: "error",
+            title: "Erreur",
+            text: "Identifiant ou mot de passe invalide.",
+          });
         });
     } else {
-      Swal.fire(
-        "Veuillez renseigner votre adresse e-mail ainsi que votre mot de passe."
-      );
+      Swal.fire({
+        icon: "error",
+        title: "Erreur",
+        text: "Veuillez renseigner votre adresse e-mail ainsi que votre mot de passe.",
+      });
     }
   }
 
