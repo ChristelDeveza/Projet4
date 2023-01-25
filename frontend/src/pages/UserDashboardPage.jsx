@@ -102,7 +102,11 @@ function UserDashboardPage() {
         localStorage.setItem("user", null);
       })
       .then(() => {
-        Swal.fire("Vous êtes déconnecté");
+        Swal.fire({
+          icon: "success",
+          title: "Confirmation",
+          text: "Déconnexion réussie.",
+        });
       })
       .catch((err) => {
         if (err.response.status === 401) {

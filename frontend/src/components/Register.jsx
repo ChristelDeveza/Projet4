@@ -36,7 +36,7 @@ function Register() {
       type: "text",
       placeholder: "Nom",
       errorMessage:
-        "Ce champs est obligatoire et doit contenir entre 3 et 16 caractères (lettres)",
+        "Ce champ est obligatoire et doit contenir entre 3 et 16 caractères (lettres)",
       label: "Nom",
       pattern: "^[A-zÀ-ù]{3,16}$",
       required: true,
@@ -47,7 +47,7 @@ function Register() {
       type: "text",
       placeholder: "Prénom",
       errorMessage:
-        "Ce champs est obligatoire et doit contenir entre 3 et 16 caractères (lettres)",
+        "Ce champ est obligatoire et doit contenir entre 3 et 16 caractères (lettres)",
       label: "Prénom",
       pattern: "^[A-zÀ-ù]{3,16}$",
       required: true,
@@ -58,7 +58,7 @@ function Register() {
       type: "text",
       placeholder: "Adresse",
       errorMessage:
-        "Ce champs est obligatoire et doit contenir entre 3 et 36 caractères (chiffres-lettres)",
+        "Ce champ est obligatoire et doit contenir entre 3 et 36 caractères (chiffres-lettres)",
       label: "Adresse",
       pattern: "^[A-zÀ-ù0-9_ ]{3,36}$",
       required: true,
@@ -69,7 +69,7 @@ function Register() {
       type: "email",
       placeholder: "E-mail",
       errorMessage:
-        "Ce champs est obligatoire et doit être conforme au format e-mail",
+        "Ce champ est obligatoire et doit être conforme au format e-mail",
       label: "E-mail",
       required: true,
     },
@@ -79,7 +79,7 @@ function Register() {
       type: "password",
       placeholder: "Mot de passe",
       errorMessage:
-        "Ce champs est obligatoire et doit contenir entre 8 et 20 caractères, dont lettres, chiffres et caractères spéciaux",
+        "Ce champ est obligatoire et doit contenir entre 8 et 20 caractères, dont lettres, chiffres et caractères spéciaux",
       label: "Mot de passe",
       pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#%^&*])[a-zA-Z0-9!@#%^&*]{8,20}$`,
       required: true,
@@ -98,7 +98,11 @@ function Register() {
       !values.email ||
       !values.password
     ) {
-      Swal.fire("Afin de vous inscrire, merci de compléter tous les champs");
+      Swal.fire({
+        icon: "error",
+        title: "Erreur",
+        text: "Veuillez renseigner tous les champs du formulaire",
+      });
       return;
     }
 
@@ -110,7 +114,11 @@ function Register() {
       values.email.match(inputsArray[3].pattern) === null ||
       values.password.match(inputsArray[4].pattern) === null
     ) {
-      Swal.fire("Champ incorrect, merci de modifier");
+      Swal.fire({
+        icon: "error",
+        title: "Erreur",
+        text: "Les champs du formulaire sont incorrectement renseignés, merci de modifier",
+      });
       return;
     }
     // post data into database
@@ -123,9 +131,11 @@ function Register() {
         Password: values.password,
       })
       .then(() => {
-        Swal.fire(
-          "Votre compte a bien été enregistré. Pour accéder à votre compte, merci de vous connecter."
-        );
+        Swal.fire({
+          icon: "success",
+          title: "Confirmation",
+          text: "Votre compte a bien été enregistré. Pour accéder à votre compte, merci de vous connecter.",
+        });
       })
       .then(() => {
         navigate("/", { replace: true });
