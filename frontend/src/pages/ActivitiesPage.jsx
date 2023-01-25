@@ -168,7 +168,7 @@ function ActivitiesPage() {
     <div className="activities">
       <img className="img-subscription-page" src={muscu2} alt="muscu" />
       <div className="header-subscription-page">
-        <h2>NOS ACTIVITES</h2>
+        <h2 className="header-title">NOS ACTIVITES</h2>
       </div>
 
       <div className="box">
@@ -178,7 +178,7 @@ function ActivitiesPage() {
               <ul>
                 <div className="box1">
                   <div className="box2">
-                    <h2>{data.title}</h2>
+                    <h2 className="activity-title">{data.title}</h2>
                     {data.picture}
                   </div>
                   <div className="box3">

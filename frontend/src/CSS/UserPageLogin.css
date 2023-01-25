@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .show-register-button {
@@ -22,5 +22,9 @@
   #registerpage {
     width: 390px;
     height: 930px;
+  }
+
+  .loginpage {
+    justify-content: space-around;
   }
 }

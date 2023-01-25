@@ -58,6 +58,10 @@
   background-color: var(--maximum-yellow-red);
 }
 
+.input-form {
+  display: contents;
+}
+
 .end-register-page {
   text-align: center;
 }
@@ -99,9 +103,13 @@ input:invalid[focus="true"] ~ span {
 
   .register-form {
     justify-content: space-evenly;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .errorMsg {
     width: fit-content;
   }
+
+  
 }
