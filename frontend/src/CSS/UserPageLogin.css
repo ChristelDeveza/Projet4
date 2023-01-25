@@ -19,9 +19,12 @@
 }
 
 @media screen and (max-width: 768px) {
-  .show-register-button {
-    margin-top: 8rem;
+  #registerpage {
+    width: 390px;
+    height: 930px;
+  }
 
-    
+  .loginpage {
+    justify-content: space-around;
   }
 }

@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-
 import "../CSS/Register.css";
 
 function Register() {
@@ -13,6 +12,7 @@ function Register() {
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
 
+  // state which concerns form field values
   const [values, setValues] = useState({
     lastname: "",
     firstname: "",
@@ -23,10 +23,12 @@ function Register() {
 
   const [focus, setFocus] = useState(false);
 
+  // focus on a field
   function handleFocus() {
     setFocus(true);
   }
 
+  // array which gathers all form inputs
   const inputsArray = [
     {
       id: 1,
@@ -85,8 +87,10 @@ function Register() {
   ];
   const navigate = useNavigate();
 
+  // Submit form into database
   function handleSubmit(e) {
     e.preventDefault();
+    // check if all inputs are filed
     if (
       !values.lastname ||
       !values.firstname ||
@@ -98,6 +102,7 @@ function Register() {
       return;
     }
 
+    // check if all inputs are conform with pattern
     if (
       values.lastname.match(inputsArray[0].pattern) === null ||
       values.firstname.match(inputsArray[1].pattern) === null ||
@@ -108,6 +113,7 @@ function Register() {
       Swal.fire("Champ incorrect, merci de modifier");
       return;
     }
+    // post data into database
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/register`, {
         Name: values.lastname,
@@ -132,33 +138,35 @@ function Register() {
       <h1 className="title-register">CREER UN COMPTE</h1>
 
       <form onSubmit={handleSubmit} className="register-form">
-        {inputsArray.map((input) => (
-          <div key={input.id}>
-            <label htmlFor="name" className="label-register">
-              {" "}
-              {input.label}
-            </label>
-            <input
-              className="register-input"
-              {...input}
-              value={values[input.name]}
-              onChange={(e) =>
-                setValues({ ...values, [e.target.name]: e.target.value })
-              }
-              required={input.required}
-              onBlur={handleFocus}
-              focus={focus.toString()}
-            />
-            <span className="errorMsg">{input.errorMessage}</span>
-          </div>
-        ))}
-        <button
-          className="register-button"
-          type="button"
-          onClick={handleSubmit}
-        >
-          ENREGISTRER
-        </button>
+        <div className="input-form">
+          {inputsArray.map((input) => (
+            <div key={input.id}>
+              <label htmlFor="name" className="label-register">
+                {" "}
+                {input.label}
+              </label>
+              <input
+                className="register-input"
+                {...input}
+                value={values[input.name]}
+                onChange={(e) =>
+                  setValues({ ...values, [e.target.name]: e.target.value })
+                }
+                required={input.required}
+                onBlur={handleFocus}
+                focus={focus.toString()}
+              />
+              <span className="errorMsg">{input.errorMessage}</span>
+            </div>
+          ))}
+          <button
+            className="register-button"
+            type="button"
+            onClick={handleSubmit}
+          >
+            ENREGISTRER
+          </button>
+        </div>
       </form>
       {/* <form onSubmit={handleSubmit} className="register-form">
         <label htmlFor="name">Nom :</label>

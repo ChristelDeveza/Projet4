@@ -212,7 +212,7 @@ function AdminDashboardPage() {
     <div className="adminDashboard">
       <img className="img-dashboard-page" src={muscu} alt="muscu" />
       <div className="header-dashboard-page">
-        <h2>TABLEAU DE BORD</h2>
+        <h2 className="header-title">TABLEAU DE BORD</h2>
       </div>
 
       <div className="dashboard-container">

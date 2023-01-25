@@ -1,12 +1,13 @@
 .img-dashboard-page {
   background-size: cover;
+  object-fit: cover;
   width: 202vh;
   height: 600px;
 }
-
+/* 
 h2 {
   text-align: center;
-}
+} */
 
 .header-dashboard-page {
   position: absolute;

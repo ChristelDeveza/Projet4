@@ -175,14 +175,14 @@ function SubscriptionPage() {
     <div className="subscription-page">
       <img className="img-subscription-page" src={muscu} alt="muscu" />
       <div className="header-subscription-page">
-        <h2>NOS ABONNEMENTS</h2>
+        <h2 className="header-title">NOS ABONNEMENTS</h2>
       </div>
 
       <div className="subscription-page-container">
         {SubscriptionPageDatas.map((data) => {
           return (
             <div className="box-subs" key={data.title}>
-              <ul>
+              <ul className="ul-margin">
                 <h3 className="title-subs-box">{data.title}</h3>
                 <h4 className="price">
                   {" "}
@@ -191,10 +191,10 @@ function SubscriptionPage() {
                 </h4>
                 {data.advantages}
                 {data.description}
-                <div className="button-insc">
-                  <ButtonInscription />
-                </div>
               </ul>
+              <div className="button-insc">
+                <ButtonInscription />
+              </div>
             </div>
           );
         })}
