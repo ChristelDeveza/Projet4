@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
+// Function displays member count (all, new, by abonnement)
 function Count({ adherentCount }) {
   const numberAdherent = adherentCount.map((element) => element).length;
   const numberNewAdherent = adherentCount.filter(

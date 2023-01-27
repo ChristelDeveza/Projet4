@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
+// Function search admin
 function SearchAdmin({ searchValue, setSearchValue }) {
   return (
     <div>

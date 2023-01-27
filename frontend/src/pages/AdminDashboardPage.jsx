@@ -18,6 +18,7 @@ function AdminDashboardPage() {
   const [adherentCount, setAdherentCount] = useState([]);
   const navigate = useNavigate();
 
+  // Display all members
   useEffect(() => {
     axios
       .get(
@@ -33,6 +34,7 @@ function AdminDashboardPage() {
       });
   }, []);
 
+  // Function search by admin into member table
   const handleSubmit = () => {
     axios
       .get(
@@ -48,6 +50,7 @@ function AdminDashboardPage() {
       });
   };
 
+  // Function display all members after a search
   function backToList() {
     axios
       .get(
@@ -62,6 +65,7 @@ function AdminDashboardPage() {
       });
   }
 
+  // Function display all new members
   function getNewAdherentList() {
     axios
       .get(
@@ -78,7 +82,7 @@ function AdminDashboardPage() {
       });
   }
 
-  // filter abonnement search admin
+  // Filter abonnement admin with checkbox
   const abonnement = [1, 2, 3];
 
   const [checkedAbonnement, setCheckedAbonnement] = useState(
@@ -87,6 +91,7 @@ function AdminDashboardPage() {
 
   let updateDatas = [...adherentList];
 
+  // Function filter by abonnement
   function handleFilter() {
     // if one Abonnement checked only
     if (checkedAbonnement[0] || checkedAbonnement[1] || checkedAbonnement[2]) {
@@ -147,6 +152,7 @@ function AdminDashboardPage() {
     return updateDatas;
   }
 
+  // Function which displays filter checkbox
   const filterAbonnementArray = (position) => {
     const updatedCheckedAbonnement = checkedAbonnement.map((item, index) =>
       index === position ? !item : item
@@ -188,6 +194,7 @@ function AdminDashboardPage() {
     });
   }
 
+  // Function logout
   function logout() {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/logout`, {

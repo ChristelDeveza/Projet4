@@ -11,6 +11,7 @@ function Login() {
   const [user, setUser] = useState("");
   const navigate = useNavigate();
 
+  // Function login
   function handleSubmit(e) {
     e.preventDefault();
     if (user && password) {
