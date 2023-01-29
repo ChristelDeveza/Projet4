@@ -40,16 +40,15 @@ class UserController {
   };
 
   // user login
-
   static login = (req, res) => {
     const { email, password } = req.body;
-
+    // if email or password field is empty
     if (!email || !password) {
       res
         .status(400)
         .send({ error: "Error, email and password must been specified" });
     }
-
+    // if email and password are not empty
     models.adherent
       .findByMail(email)
       .then(async ([rows]) => {
@@ -266,7 +265,7 @@ class UserController {
       });
   };
 
-  // Middleware
+  // Middleware - vérify token
   static authorization = (req, res, next) => {
     const token = req.cookies.access_token;
     if (!token) {

@@ -23,6 +23,7 @@ function UserDashboardPage() {
   const navAdmin = useNavigate();
   const { id } = isOnline;
 
+  // Get user details
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/userdatas`, {
@@ -45,6 +46,7 @@ function UserDashboardPage() {
       .catch((error) => console.error(error));
   }, []);
 
+  // Get user membership
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/usersubscription/${id}`)
@@ -60,6 +62,7 @@ function UserDashboardPage() {
       .catch((error) => console.error(error));
   }, []);
 
+  // Function update member details
   function handleSubmit(e) {
     e.preventDefault();
     axios
@@ -82,6 +85,7 @@ function UserDashboardPage() {
       .catch((error) => console.error(error));
   }
 
+  // Function serach a programme
   function searchProgramm(e) {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/programme/${e.target.value}`)
@@ -91,6 +95,7 @@ function UserDashboardPage() {
       .catch((error) => console.error(error));
   }
 
+  // Function logout
   function logout() {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/logout`, {
@@ -115,6 +120,7 @@ function UserDashboardPage() {
       });
   }
 
+  // Redirection to admindashboard if user has role admin
   function navigationAdmin() {
     navAdmin("/AdminDashboard", { replace: true });
   }

@@ -5,6 +5,7 @@ import React from "react";
 
 const abonnementName = ["CHEAP", "FIT", "GOLD"];
 
+// Function displays checkbox
 function Filter({ abonnement, checkedAbonnement, filterAbonnementArray }) {
   return (
     <div>

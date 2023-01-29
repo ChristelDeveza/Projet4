@@ -11,8 +11,10 @@ function Login() {
   const [user, setUser] = useState("");
   const navigate = useNavigate();
 
+  // Function login
   function handleSubmit(e) {
     e.preventDefault();
+    // if user and password exist in database
     if (user && password) {
       axios
         .post(
@@ -32,6 +34,7 @@ function Login() {
         .then(() => {
           navigate("/MonCompteuser", { replace: true });
         })
+        // If error
         .catch((err) => {
           console.error(err);
           Swal.fire({
@@ -41,6 +44,7 @@ function Login() {
           });
         });
     } else {
+      // If fields are empty
       Swal.fire({
         icon: "error",
         title: "Erreur",

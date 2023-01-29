@@ -2,6 +2,7 @@
 /* eslint-disable camelcase */
 import React from "react";
 
+// function displays member details
 function CardAdherent(props) {
   const { Id, Name, Firstname, Address, Email, Is_Abonnement } = props;
   return (

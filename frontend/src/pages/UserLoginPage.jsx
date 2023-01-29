@@ -7,6 +7,7 @@ import "../CSS/UserPageLogin.css";
 function UserLoginPage() {
   const [loginChoice, setLoginChoice] = useState(false);
 
+  // Interchange between login page and register page
   function showLogin() {
     setLoginChoice(!loginChoice);
   }

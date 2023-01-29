@@ -7,6 +7,7 @@ import yoga from "../assets/yoga.jpg";
 import muscu2 from "../assets/muscu2.jpg";
 
 function ActivitiesPage() {
+  // Activities array
   const activitiesList = [
     {
       picture: (
