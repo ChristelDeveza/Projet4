@@ -51,10 +51,20 @@
   transition: 400ms all;
   background-color: var(--prussian-blue);
   width: 7rem;
-  border: 2px solid var(--orange);
+  height: 4rem;
   border-radius: 15px;
   color: white;
   cursor: pointer;
+}
+
+.update-button:hover {
+  background: #3cb1fa;
+  background-image: -webkit-linear-gradient(top, #3cb1fa, #3c8efa);
+  background-image: -moz-linear-gradient(top, #3cb1fa, #3c8efa);
+  background-image: -ms-linear-gradient(top, #3cb1fa, #3c8efa);
+  background-image: -o-linear-gradient(top, #3cb1fa, #3c8efa);
+  background-image: linear-gradient(to bottom, #3cb1fa, #3c8efa);
+  text-decoration: none;
 }
 
 .subs-user-box {
@@ -118,7 +128,7 @@
   border: 1px solid black;
   padding: 2rem;
   background-color: var(--prussian-blue);
-  color:white;
+  color: white;
 }
 
 .entete-subs {
@@ -129,13 +139,13 @@
 .subs-name {
   font-size: x-large;
   font-weight: bolder;
- text-align: center;
+  text-align: center;
 }
 
 .subs-price {
   text-align: center;
-   font-size: large;
-  font-weight:bold;
+  font-size: large;
+  font-weight: bold;
 }
 
 .subs-detail {
