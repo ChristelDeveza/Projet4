@@ -6,7 +6,7 @@ function Subscription() {
   const SubscriptionDatas = [
     {
       title: "CHEAP",
-      price: "16,99 € pendant 6 mois, puis 21,99 € les 6 autres mois",
+      price: "16,99 € pendant 6 mois, puis 21,99 €",
       advantages: (
         <p>
           <ul>
@@ -41,7 +41,7 @@ function Subscription() {
     },
     {
       title: "FIT",
-      price: "23,99 € pendant 6 mois, puis 29,99 € les 6 autres mois",
+      price: "23,99 € pendant 6 mois, puis 29,99 €",
       advantages: (
         <p>
           <ul>
@@ -77,7 +77,7 @@ function Subscription() {
     },
     {
       title: "GOLD",
-      price: "31,99 € pendant 6 mois, puis 36,99 € les 6 autres mois",
+      price: "31,99 € pendant 6 mois, puis 36,99 €",
       advantages: (
         <p>
           <ul>

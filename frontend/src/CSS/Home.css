@@ -68,7 +68,6 @@
   display: flex;
   flex-direction: row;
   gap: 3rem;
-  
 }
 
 .home-btn > :nth-child(1) {
@@ -77,6 +76,7 @@
   width: 7rem;
   border: 2px solid;
   border-radius: 15px;
+  height: 4rem;
 }
 
 .home-btn > :nth-child(2) {
@@ -90,20 +90,28 @@
 
 .btnH {
   background-color: white;
-  padding: 0.5rem;
+  padding: 2rem;
   font-weight: bold;
   border: 3px solid transparent;
   transition: 400ms all;
   text-decoration: none;
+  height: 4rem;
 }
 
 .btnH:hover {
   cursor: pointer;
+  background: #fcc93c;
+  background-image: -webkit-linear-gradient(top, #fcc93c, #fcc93c);
+  background-image: -moz-linear-gradient(top, #fcc93c, #fcc93c);
+  background-image: -ms-linear-gradient(top, #fcc93c, #fcc93c);
+  background-image: -o-linear-gradient(top, #fcc93c, #fcc93c);
+  background-image: linear-gradient(to bottom, #fcc93c, #fcc93c);
+  text-decoration: none;
 }
 
 .text-decoration {
   text-decoration: none;
-  color:white;
+  color: white;
 }
 
 .right-home-box {
@@ -124,6 +132,18 @@
   border-radius: 15px;
   padding: 0.5rem;
   cursor: pointer;
+  font-size: large;
+  font-weight: bold;
+}
+
+.btn-mon-compte:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
 }
 
 .icon-activities {
@@ -139,7 +159,7 @@
   font-size: 50px;
 }
 
-@media screen and (max-width:768px){
+@media screen and (max-width: 768px) {
   .Home {
     flex-direction: column;
   }
@@ -148,4 +168,3 @@
     display: none;
   }
 }
-

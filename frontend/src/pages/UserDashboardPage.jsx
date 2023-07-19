@@ -224,64 +224,68 @@ function UserDashboardPage() {
             Tableau de bord
           </button>
         )}
-        <div className="subs-user-box">
-          <div>
-            <h2 className="box-entete">MON ABONNEMENT</h2>
+        {role !== 1 && (
+          <div className="subs-user-box">
+            <div>
+              <h2 className="box-entete">MON ABONNEMENT</h2>
 
-            {subscription ? (
-              <div className="subs-text-box">
-                <h3 className="entete-subs">
-                  {subscription.firstname} tu trouveras ci-après les conditions
-                  et le détail de ton abonnement :
-                </h3>
-                <div className="subs-name">
-                  <h4>
-                    {" "}
-                    <BiRun />
-                    {subscription.Name}
-                  </h4>
-                </div>
-                <div className="subs-price">
-                  <h4>
-                    <GoFlame className="icon-flame" />
-                    Prix de l'abonnement : {subscription.Price},99 € pendant 6
-                    mois, puis 23,99 € les 6 autres mois
-                  </h4>
-                </div>
-                <div>
-                  <div className="subs-detail">
-                    Détail : <br />
+              {subscription ? (
+                <div className="subs-text-box">
+                  <h3 className="entete-subs">
+                    {subscription.firstname} tu trouveras ci-après les
+                    conditions et le détail de ton abonnement :
+                  </h3>
+                  <div className="subs-name">
+                    <h4>
+                      {" "}
+                      <BiRun />
+                      {subscription.Name}
+                    </h4>
                   </div>
-                  <br />
-                  {subscription.Description}
+                  <div className="subs-price">
+                    <h4>
+                      <GoFlame className="icon-flame" />
+                      Prix de l'abonnement : {subscription.Price},99 € pendant 6
+                      mois, puis 23,99 €
+                    </h4>
+                  </div>
+                  <div>
+                    <div className="subs-detail">
+                      Détail : <br />
+                    </div>
+                    <br />
+                    {subscription.Description}
+                  </div>
                 </div>
+              ) : null}
+            </div>
+          </div>
+        )}
+        {role !== 1 && (
+          <div className="prog-user-box">
+            <h2 className="box-entete">MES PROGRAMMES</h2>
+            <label className="prog-select" htmlFor="programme-select">
+              Choisissez un programme:
+            </label>
+
+            <select onChange={(e) => searchProgramm(e)}>
+              {programme &&
+                programme.map((element) => {
+                  return (
+                    <option key={element.id} value={element.id}>
+                      {element.Name}
+                    </option>
+                  );
+                })}
+            </select>
+            {programmeById ? (
+              <div>
+                <h3>{programmeById.Name}</h3>
+                <p>{programmeById.Description}</p>
               </div>
             ) : null}
           </div>
-        </div>
-        <div className="prog-user-box">
-          <h2 className="box-entete">MES PROGRAMMES</h2>
-          <label className="prog-select" htmlFor="programme-select">
-            Choisissez un programme:
-          </label>
-
-          <select onChange={(e) => searchProgramm(e)}>
-            {programme &&
-              programme.map((element) => {
-                return (
-                  <option key={element.id} value={element.id}>
-                    {element.Name}
-                  </option>
-                );
-              })}
-          </select>
-          {programmeById ? (
-            <div>
-              <h3>{programmeById.Name}</h3>
-              <p>{programmeById.Description}</p>
-            </div>
-          ) : null}
-        </div>
+        )}
       </div>
     </div>
   );

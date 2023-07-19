@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../CSS/Navbar.css";
 import ButtonMyAccount from "./ButtonMyAccount";
+import logo from "../assets/Logo projet 4.png";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -34,7 +35,7 @@ function Navbar() {
                 aria-label="visit homepage"
                 aria-current="page"
               >
-                <span className="logo">FIT N CHEAP CLUB</span>
+                <img className="logo-navbar" src={logo} alt="logo" />
               </Link>
             </li>
 
@@ -44,7 +45,7 @@ function Navbar() {
             <li className="lineHover">
               <Link to="Abonnements">Abonnements</Link>
             </li>
-            <li>
+            <li className="lineHover">
               <Link to="Activites">Activités</Link>
             </li>
             <li className="lineHover">
