@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react/jsx-no-bind */
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "../CSS/Navbar.css";
 import ButtonMyAccount from "./ButtonMyAccount";
@@ -6,20 +7,47 @@ import logo from "../assets/Logo projet 4.png";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
+  const navContainerRef = useRef(null);
+  const hamburgerRef = useRef(null);
 
   function showSidebar() {
     setSidebar(!sidebar);
   }
+
+  function closeSidebarAndNavigate() {
+    setSidebar(false);
+  }
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        navContainerRef.current &&
+        !navContainerRef.current.contains(event.target) &&
+        hamburgerRef.current &&
+        !hamburgerRef.current.contains(event.target)
+      ) {
+        setSidebar(false);
+      }
+    }
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="Navbar">
       <nav>
         <ul>
           <div className="button-container">
             <button
+              ref={hamburgerRef}
               className={sidebar ? "hamburger open" : "hamburger"}
               type="button"
               aria-label="Toggle nav"
-              aria-expanded="false"
+              aria-expanded={sidebar ? "true" : "false"}
               onClick={showSidebar}
             >
               <span />
@@ -27,35 +55,49 @@ function Navbar() {
               <span />
             </button>
           </div>
-          <div className={!sidebar ? "nav-container" : "nav-container open"}>
+          <div
+            ref={navContainerRef}
+            className={!sidebar ? "nav-container" : "nav-container open"}
+          >
             <li>
               <Link
                 to="/"
                 className="nav-icon"
                 aria-label="visit homepage"
                 aria-current="page"
+                onClick={closeSidebarAndNavigate}
               >
                 <img className="logo-navbar" src={logo} alt="logo" />
               </Link>
             </li>
 
             <li className="lineHover">
-              <Link to="/">Accueil</Link>
+              <Link to="/" onClick={closeSidebarAndNavigate}>
+                Accueil
+              </Link>
             </li>
             <li className="lineHover">
-              <Link to="Abonnements">Abonnements</Link>
+              <Link to="Abonnements" onClick={closeSidebarAndNavigate}>
+                Abonnements
+              </Link>
             </li>
             <li className="lineHover">
-              <Link to="Activites">Activités</Link>
+              <Link to="Activites" onClick={closeSidebarAndNavigate}>
+                Activités
+              </Link>
             </li>
             <li className="lineHover">
-              <Link to="APropos">A propos</Link>
+              <Link to="APropos" onClick={closeSidebarAndNavigate}>
+                A propos
+              </Link>
             </li>
             <li className="lineHover">
-              <Link to="Contact">Contact</Link>
+              <Link to="Contact" onClick={closeSidebarAndNavigate}>
+                Contact
+              </Link>
             </li>
             <li>
-              <Link to="MonCompte">
+              <Link to="MonCompte" onClick={closeSidebarAndNavigate}>
                 <ButtonMyAccount />
               </Link>
             </li>

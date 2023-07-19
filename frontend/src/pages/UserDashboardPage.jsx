@@ -196,7 +196,7 @@ function UserDashboardPage() {
               value={email}
               required
             />
-            <div>
+            <div className="btn-update-disconnect-container">
               <div className="btn-update">
                 <button
                   className="update-button"

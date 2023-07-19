@@ -14,14 +14,25 @@
 
 .user-datas-box {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   border-top: 2px solid var(--orange);
+  justify-content: space-around;
 }
 
 .ec-box {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.btn-update-disconnect-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .label-input {
@@ -30,7 +41,7 @@
 
 .data-input {
   height: 50px;
-  width: 20rem;
+  width: 30rem;
   background-color: var(--lemon-meringue);
   border-radius: 3px;
   padding: 0 10px;
@@ -75,11 +86,6 @@
   border-top: 2px solid var(--orange);
 }
 
-.btn-update {
-  margin: 2rem;
-  margin-left: 7rem;
-}
-
 .subs-user-box {
   display: flex;
   flex-direction: column;
@@ -108,11 +114,6 @@
   border-radius: 15px;
   color: white;
   cursor: pointer;
-}
-
-.btn-disconnect {
-  margin: 2rem;
-  margin-left: 6rem;
 }
 
 .subs-box {
