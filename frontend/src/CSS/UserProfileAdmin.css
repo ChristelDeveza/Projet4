@@ -1,0 +1,25 @@
+.user-profile-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-user-profile {
+  margin-top: 10rem;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+}
+
+#input-box {
+  
+  background-color: var(--lemon-meringue);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 300;
+  border: 1px solid black;
+}

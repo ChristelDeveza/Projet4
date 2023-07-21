@@ -265,6 +265,25 @@ class UserController {
       });
   };
 
+  // Get user datas by admin with middleware
+  static readUserProfile = (req, res) => {
+    const adherent = req.body;
+    adherent.id = parseInt(req.params.id, 10);
+    models.adherent
+      .findUserProfile(adherent.id)
+      .then(([rows]) => {
+        if (rows[0] == null) {
+          res.sendStatus(404);
+        } else {
+          res.send(rows[0]);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
+
   // Middleware - vérify token
   static authorization = (req, res, next) => {
     const token = req.cookies.access_token;
