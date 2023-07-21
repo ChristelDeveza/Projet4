@@ -12,6 +12,7 @@ import Register from "./components/Register";
 import UserDashboardPage from "./pages/UserDashboardPage";
 import UserContextIsOnline from "./context/UserContext";
 import AdminDashboardPage from "./pages/AdminDashboardPage";
+import UserProfileAdmin from "./components/UserProfileAdmin";
 
 function App() {
   return (
@@ -29,6 +30,10 @@ function App() {
             <Route path="Moncompte/CreerUnCompte" element={<Register />} />
             <Route path="Moncompteuser" element={<UserDashboardPage />} />
             <Route path="AdminDashboard" element={<AdminDashboardPage />} />
+            <Route
+              path="AdminDashboard/UserProfile/:id"
+              element={<UserProfileAdmin />}
+            />
           </Routes>
         </Router>
       </UserContextIsOnline>

@@ -8,6 +8,7 @@ import { BiRun } from "react-icons/bi";
 import { UserContext } from "../context/UserContext";
 import HeaderAccountUser from "../components/HeaderAccountUser";
 import "../CSS/UserDashboardPage.css";
+import photo from "../assets/photo-home.jpg";
 
 function UserDashboardPage() {
   const { isOnline, setIsOnline } = useContext(UserContext);
@@ -85,6 +86,10 @@ function UserDashboardPage() {
       .catch((error) => console.error(error));
   }
 
+  function handleSubmitImage() {
+    //
+  }
+
   // Function serach a programme
   function searchProgramm(e) {
     axios
@@ -135,39 +140,39 @@ function UserDashboardPage() {
       </div>
 
       <div className="user-datas-box">
-        <div className="ec-box">
-          <h2 className="box-entete">MES COORDONNEES</h2>
+        <h2 className="box-entete">MES COORDONNEES</h2>
+
+        <div className={role === 0 ? "ec-box" : "ec-box-admin"}>
           <form onSubmit={handleSubmit} className="user-datas">
             <div>
-              <div>
-                <label className="label-input" htmlFor="name">
-                  Nom :
-                </label>
-              </div>
-              <input
-                className="data-input"
-                type="text"
-                id="Name"
-                autoComplete="off"
-                onChange={(e) => setLastname(e.target.value)}
-                value={lastname}
-                required
-              />
-              <div>
-                <label className="label-input" htmlFor="firstname">
-                  Prénom :
-                </label>
-              </div>
-              <input
-                className="data-input"
-                type="text"
-                id="Firstname"
-                autoComplete="off"
-                onChange={(e) => setFirstname(e.target.value)}
-                value={firstname}
-                required
-              />
+              <label className="label-input" htmlFor="name">
+                Nom :
+              </label>
             </div>
+            <input
+              className="data-input"
+              type="text"
+              id="Name"
+              autoComplete="off"
+              onChange={(e) => setLastname(e.target.value)}
+              value={lastname}
+              required
+            />
+            <div>
+              <label className="label-input" htmlFor="firstname">
+                Prénom :
+              </label>
+            </div>
+            <input
+              className="data-input"
+              type="text"
+              id="Firstname"
+              autoComplete="off"
+              onChange={(e) => setFirstname(e.target.value)}
+              value={firstname}
+              required
+            />
+
             <div>
               <label className="label-input" htmlFor="address">
                 Adresse :
@@ -217,13 +222,34 @@ function UserDashboardPage() {
               </div>
             </div>
           </form>
+          {role === 0 && (
+            <div className="user-photo-div">
+              <img className="user-photo" src={photo} alt="" />
+              <form onSubmit={handleSubmitImage} className="user-datas-image">
+                <div>
+                  <label htmlFor="image">Image</label>
+                  <input type="file" id="photo" name="photo" />
+                </div>
+                <div>
+                  <button type="button" onClick={handleSubmitImage}>
+                    Ajouter une photo
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+          {role === 1 && (
+            <div className="dashboard-btn-div">
+              <div>
+                <h3>Accéder à mon tableau de bord</h3>
+              </div>
+              <button type="button" onClick={navigationAdmin}>
+                Tableau de bord
+              </button>
+            </div>
+          )}
         </div>
 
-        {role === 1 && (
-          <button type="button" onClick={navigationAdmin}>
-            Tableau de bord
-          </button>
-        )}
         {role !== 1 && (
           <div className="subs-user-box">
             <div>

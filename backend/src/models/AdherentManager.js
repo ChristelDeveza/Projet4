@@ -5,7 +5,7 @@ class UserManager extends AbstractManager {
 
   findSubscriptionByUser(id) {
     return this.connection.query(
-      `SELECT adherent.firstname, adherent.Name, abonnement.Name, abonnement.Price, abonnement.Description
+      `SELECT adherent.Firstname, adherent.Name, abonnement.Name, abonnement.Price, abonnement.Description
     from  ${this.table} INNER JOIN abonnement ON abonnement.id=adherent.Is_Abonnement
     where adherent.id = ?`,
       [id]
@@ -49,6 +49,15 @@ class UserManager extends AbstractManager {
     return this.connection.query(
       `SELECT * FROM ${this.table} WHERE Email LIKE ? OR Firstname LIKE ? OR Name LIKE ?`,
       [searchword, searchword, searchword]
+    );
+  }
+
+  findUserProfile(id) {
+    return this.connection.query(
+      `SELECT adherent.Firstname, adherent.Name as Lastname, adherent.Address, adherent.Email, abonnement.Name as abName, abonnement.Price, programme.Name as prName, programme.description
+    from  ${this.table} LEFT JOIN abonnement ON abonnement.id=adherent.Is_Abonnement LEFT JOIN adherent_has_programme ON adherent.id = adherent_id LEFT JOIN programme ON programme.id = programme_id
+    where adherent.id = ?`,
+      [id]
     );
   }
 }
