@@ -1,5 +1,7 @@
 const express = require("express");
 
+const upload = require("./upload");
+
 const { AdherentController, ProgrammeController } = require("./controllers");
 const { authorization, isAdmin } = require("./controllers/AdherentController");
 
@@ -10,6 +12,14 @@ router.post("/register", AdherentController.register);
 
 // Route login
 router.post("/login", AdherentController.login);
+
+// Route photo
+router.post(
+  "/upload",
+  upload.single("photo"),
+  // authorization,
+  AdherentController.postPhoto
+);
 
 // Route get subscription
 router.get("/usersubscription/:id", AdherentController.getSubscriptionByUser);
@@ -26,6 +36,9 @@ router.get("/userdatas", authorization, AdherentController.read);
 // Route update one user datas
 router.put("/userdatas", authorization, AdherentController.edit);
 
+// Route update one user photo
+router.put("/userdatas/photo/:id", AdherentController.addPhoto);
+
 // Route logout
 router.get("/logout", authorization, AdherentController.logout);
 
@@ -39,7 +52,7 @@ router.get("/search/admin", authorization, isAdmin, AdherentController.search);
 router.get(
   "/admin/userProfile/:id",
   authorization,
-  isAdmin,
+  // isAdmin,
   AdherentController.readUserProfile
 );
 

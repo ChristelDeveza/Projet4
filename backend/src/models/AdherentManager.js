@@ -27,14 +27,22 @@ class UserManager extends AbstractManager {
 
   update(adherent) {
     return this.connection.query(
-      `update ${UserManager.table} set Name = ?, Firstname = ?, Address = ?, Email = ? where id = ?`,
+      `update ${UserManager.table} set Name = ?, Firstname = ?, Address = ?, Email = ?, photoId = ? where id = ?`,
       [
         adherent.Name,
         adherent.Firstname,
         adherent.Address,
         adherent.Email,
         adherent.id,
+        adherent.photoId,
       ]
+    );
+  }
+
+  insertPhoto(photoId, adherentId) {
+    return this.connection.query(
+      `update ${UserManager.table} set photoId = ? where id = ?`,
+      [photoId, adherentId]
     );
   }
 
