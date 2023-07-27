@@ -238,7 +238,8 @@ class UserController {
   };
 
   static addPhoto = (req, res, photoId) => {
-    const adherentId = parseInt(req.params.id, 10);
+    const id = parseInt(req.body.id, 10);
+    // console.log(typeof id);
     // console.log("adherentIs", adherentId);
     // if (isNaN(adherentId)) {
     //   console.error("L'ID de l'adhérent n'est pas un nombre valide.");
@@ -259,15 +260,15 @@ class UserController {
     // const number = adherent.id;
     // console.log(typeof number);
 
-    // console.log("adherentId", number, "photoId", photoId);
+    // console.log("adherentId", id, "photoId", photoId);
     models.adherent
-      .insertPhoto(photoId, adherentId)
+      .insertPhoto(photoId, id)
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);
         } else {
           // console.log(result);
-          res.res(result);
+          res.send(result);
         }
       })
       .catch((err) => {

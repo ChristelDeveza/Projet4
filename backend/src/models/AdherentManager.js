@@ -39,10 +39,10 @@ class UserManager extends AbstractManager {
     );
   }
 
-  insertPhoto(photoId, adherentId) {
+  insertPhoto(photoId, id) {
     return this.connection.query(
       `update ${UserManager.table} set photoId = ? where id = ?`,
-      [photoId, adherentId]
+      [photoId, id]
     );
   }
 

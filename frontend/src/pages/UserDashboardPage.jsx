@@ -97,7 +97,7 @@ function UserDashboardPage() {
     formData.append("photo", photo);
 
     // Ajouter l'ID de l'utilisateur à la requête POST
-    // formData.append("id", id);
+    formData.append("id", id);
 
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/upload`, formData, {
@@ -116,7 +116,6 @@ function UserDashboardPage() {
           .put(
             `${import.meta.env.VITE_BACKEND_URL}/userdatas/photo/${id}`,
             {
-              id,
               photoId,
             },
             {

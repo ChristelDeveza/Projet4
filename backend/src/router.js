@@ -17,7 +17,7 @@ router.post("/login", AdherentController.login);
 router.post(
   "/upload",
   upload.single("photo"),
-  // authorization,
+  authorization,
   AdherentController.postPhoto
 );
 
@@ -37,7 +37,7 @@ router.get("/userdatas", authorization, AdherentController.read);
 router.put("/userdatas", authorization, AdherentController.edit);
 
 // Route update one user photo
-router.put("/userdatas/photo/:id", AdherentController.addPhoto);
+router.put("/userdatas/photo/:id", authorization, AdherentController.addPhoto);
 
 // Route logout
 router.get("/logout", authorization, AdherentController.logout);
