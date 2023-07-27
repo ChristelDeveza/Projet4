@@ -111,40 +111,6 @@ class UserController {
       });
   };
 
-  // eslint-disable-next-line consistent-return
-  static postPhoto = (req, res) => {
-    // const { userId } = req;
-    const photoPath = req.file ? req.file.path : null;
-    // console.log("req.file:", req.file);
-    // console.log("photoPath:", photoPath);
-
-    try {
-      if (!photoPath) {
-        return res
-          .status(400)
-          .send("Le fichier photo n'a pas été correctement téléchargé.");
-      }
-
-      // Étape 1 : Insérer la photo dans la table "photo"
-      models.photo
-        .insert({ photo_path: photoPath })
-        .then(([result]) => {
-          // Récupérer l'ID de la photo insérée directement à partir du résultat
-          const photoId = result.insertId;
-          // console.log(photoId);
-          // Appeler la fonction pour mettre à jour l'adhérent avec l'ID de la photo
-          this.addPhoto(req, res, photoId);
-        })
-        .catch((err) => {
-          console.error(err);
-          res.sendStatus(500);
-        });
-    } catch (err) {
-      console.error(err);
-      res.sendStatus(500);
-    }
-  };
-
   // Get user datas without middleware
   // static read = (req, res) => {
   //   models.adherent
@@ -237,38 +203,45 @@ class UserController {
       });
   };
 
-  static addPhoto = (req, res, photoId) => {
-    const id = parseInt(req.body.id, 10);
-    // console.log(typeof id);
-    // console.log("adherentIs", adherentId);
-    // if (isNaN(adherentId)) {
-    //   console.error("L'ID de l'adhérent n'est pas un nombre valide.");
-    //   return res.sendStatus(400);
-    // }
-    // const adherent = req.body;
-    // adherent.id = parseInt(req.params.id, 10);
-    // console.log(typeof adherent);
+  // eslint-disable-next-line consistent-return
+  static postPhoto = (req, res) => {
+    const photoPath = req.file ? req.file.path : null;
 
-    // console.log(typeof adherent.id);
-    // console.log(adherent.id);
+    try {
+      if (!photoPath) {
+        return res
+          .status(400)
+          .send("Le fichier photo n'a pas été correctement téléchargé.");
+      }
 
-    // const number = parseInt(adherent.id, 10);
-    // console.log("check", number);
-    // console.log(typeof number);
+      models.photo
+        .insert({ photo_path: photoPath })
+        .then(([result]) => {
+          const photoId = result.insertId;
+          const adherentId = req.body.id;
 
-    // number = parseInt(req.params.id, 10);
-    // const number = adherent.id;
-    // console.log(typeof number);
+          this.addPhoto(req, res, photoId, adherentId);
+        })
+        .catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+        });
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
+  };
 
-    // console.log("adherentId", id, "photoId", photoId);
+  static addPhoto = (req, res, photoId, adherentId) => {
+    const id = adherentId;
+    // console.log(id, photoId);
     models.adherent
       .insertPhoto(photoId, id)
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);
         } else {
-          // console.log(result);
-          res.send(result);
+          res.sendStatus(200);
         }
       })
       .catch((err) => {

@@ -37,7 +37,7 @@ router.get("/userdatas", authorization, AdherentController.read);
 router.put("/userdatas", authorization, AdherentController.edit);
 
 // Route update one user photo
-router.put("/userdatas/photo/:id", authorization, AdherentController.addPhoto);
+router.put("/userdatas", authorization, AdherentController.addPhoto);
 
 // Route logout
 router.get("/logout", authorization, AdherentController.logout);

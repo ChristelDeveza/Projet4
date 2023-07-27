@@ -86,12 +86,12 @@ function UserDashboardPage() {
       .catch((error) => console.error(error));
   }
 
-  function handleSubmitImage() {
+  function handleSubmitImage(e) {
     if (!id) {
       console.error("L'ID de l'utilisateur n'a pas été récupéré.");
       return;
     }
-    // console.log(typeof id);
+    // console.log(id);
 
     const formData = new FormData();
     formData.append("photo", photo);
@@ -111,10 +111,10 @@ function UserDashboardPage() {
 
         // console.log("result", photoId);
         // Étape 2 : Mettre à jour la table "adherent" avec l'ID de la photo pour l'utilisateur correspondant
-
+        e.preventDefault();
         axios
           .put(
-            `${import.meta.env.VITE_BACKEND_URL}/userdatas/photo/${id}`,
+            `${import.meta.env.VITE_BACKEND_URL}/userdatas`,
             {
               photoId,
             },
@@ -123,7 +123,7 @@ function UserDashboardPage() {
             }
           )
           .then(() => {
-            // console.log(res.data);
+            // console.log("ok");
           })
           .catch((error) => {
             console.error(
