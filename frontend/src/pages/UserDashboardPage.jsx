@@ -8,7 +8,6 @@ import { BiRun } from "react-icons/bi";
 import { UserContext } from "../context/UserContext";
 import HeaderAccountUser from "../components/HeaderAccountUser";
 import "../CSS/UserDashboardPage.css";
-import photo from "../assets/photo-home.jpg";
 
 function UserDashboardPage() {
   const { isOnline, setIsOnline } = useContext(UserContext);
@@ -16,6 +15,7 @@ function UserDashboardPage() {
   const [firstname, setFirstname] = useState("");
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
+  const [photo, setPhoto] = useState(null);
   const [subscription, setSubscription] = useState([]);
   const [programme, setProgramme] = useState();
   const [programmeById, setProgrammeById] = useState();
@@ -86,8 +86,50 @@ function UserDashboardPage() {
       .catch((error) => console.error(error));
   }
 
-  function handleSubmitImage() {
-    //
+  function handleSubmitImage(e) {
+    if (!id) {
+      console.error("L'ID de l'utilisateur n'a pas été récupéré.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("photo", photo);
+    formData.append("id", id);
+
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/upload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        const { id, photoId } = response.data;
+        e.preventDefault();
+        axios
+          .put(
+            `${import.meta.env.VITE_BACKEND_URL}/userdatas`,
+            { id, photoId },
+            {
+              withCredentials: true,
+            }
+          )
+          .then(() => {
+            Swal.fire("La photo a bien été ajoutée.");
+          })
+          .catch((error) => {
+            console.error(
+              'Erreur lors de la mise à jour de la table "adherent".',
+              error
+            );
+          });
+      })
+      .catch((error) => {
+        console.error(
+          'Erreur lors de l\'insertion de la photo dans la table "photo".',
+          error
+        );
+      });
   }
 
   // Function serach a programme
@@ -228,7 +270,12 @@ function UserDashboardPage() {
               <form onSubmit={handleSubmitImage} className="user-datas-image">
                 <div>
                   <label htmlFor="image">Image</label>
-                  <input type="file" id="photo" name="photo" />
+                  <input
+                    type="file"
+                    id="photo"
+                    name="photo"
+                    onChange={(e) => setPhoto(e.target.files[0])}
+                  />
                 </div>
                 <div>
                   <button type="button" onClick={handleSubmitImage}>

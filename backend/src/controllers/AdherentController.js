@@ -203,6 +203,52 @@ class UserController {
       });
   };
 
+  // eslint-disable-next-line consistent-return
+  static postPhoto = (req, res) => {
+    const photoPath = req.file ? req.file.path : null;
+
+    try {
+      if (!photoPath) {
+        return res
+          .status(400)
+          .send("Le fichier photo n'a pas été correctement téléchargé.");
+      }
+
+      models.photo
+        .insert({ photo_path: photoPath })
+        .then(([result]) => {
+          const photoId = result.insertId;
+          const adherentId = req.body.id;
+          // this.addPhoto(req, res, adherentId, photoId);
+          res.send({ photoId, id: adherentId });
+        })
+        .catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+        });
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
+  };
+
+  static addPhoto = (req, res) => {
+    const { id, photoId } = req.body;
+    models.adherent
+      .insertPhoto(photoId, id)
+      .then(([result]) => {
+        if (result.affectedRows === 0) {
+          res.sendStatus(404);
+        } else {
+          res.sendStatus(200);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
+
   // à utiliser pour la création d'un programme par l'admin ou d'un abonnement
   static add = (req, res) => {
     const item = req.body;
