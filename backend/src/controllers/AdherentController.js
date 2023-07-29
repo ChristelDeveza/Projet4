@@ -219,8 +219,8 @@ class UserController {
         .then(([result]) => {
           const photoId = result.insertId;
           const adherentId = req.body.id;
-
-          this.addPhoto(req, res, photoId, adherentId);
+          // this.addPhoto(req, res, adherentId, photoId);
+          res.send({ photoId, id: adherentId });
         })
         .catch((err) => {
           console.error(err);
@@ -232,9 +232,8 @@ class UserController {
     }
   };
 
-  static addPhoto = (req, res, photoId, adherentId) => {
-    const id = adherentId;
-    // console.log(id, photoId);
+  static addPhoto = (req, res) => {
+    const { id, photoId } = req.body;
     models.adherent
       .insertPhoto(photoId, id)
       .then(([result]) => {

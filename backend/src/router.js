@@ -20,6 +20,8 @@ router.post(
   authorization,
   AdherentController.postPhoto
 );
+// Route update one user photo
+router.put("/userdatas", authorization, AdherentController.addPhoto);
 
 // Route get subscription
 router.get("/usersubscription/:id", AdherentController.getSubscriptionByUser);
@@ -35,9 +37,6 @@ router.get("/userdatas", authorization, AdherentController.read);
 
 // Route update one user datas
 router.put("/userdatas", authorization, AdherentController.edit);
-
-// Route update one user photo
-router.put("/userdatas", authorization, AdherentController.addPhoto);
 
 // Route logout
 router.get("/logout", authorization, AdherentController.logout);

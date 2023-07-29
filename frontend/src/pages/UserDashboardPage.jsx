@@ -91,12 +91,9 @@ function UserDashboardPage() {
       console.error("L'ID de l'utilisateur n'a pas été récupéré.");
       return;
     }
-    // console.log(id);
 
     const formData = new FormData();
     formData.append("photo", photo);
-
-    // Ajouter l'ID de l'utilisateur à la requête POST
     formData.append("id", id);
 
     axios
@@ -107,23 +104,18 @@ function UserDashboardPage() {
         withCredentials: true,
       })
       .then((response) => {
-        const photoId = response.data;
-
-        // console.log("result", photoId);
-        // Étape 2 : Mettre à jour la table "adherent" avec l'ID de la photo pour l'utilisateur correspondant
+        const { id, photoId } = response.data;
         e.preventDefault();
         axios
           .put(
             `${import.meta.env.VITE_BACKEND_URL}/userdatas`,
-            {
-              photoId,
-            },
+            { id, photoId },
             {
               withCredentials: true,
             }
           )
           .then(() => {
-            // console.log("ok");
+            Swal.fire("La photo a bien été ajoutée.");
           })
           .catch((error) => {
             console.error(
