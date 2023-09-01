@@ -8,6 +8,7 @@ import { BiRun } from "react-icons/bi";
 import { UserContext } from "../context/UserContext";
 import HeaderAccountUser from "../components/HeaderAccountUser";
 import "../CSS/UserDashboardPage.css";
+import placeholder from "../assets/cardio.jpg";
 
 function UserDashboardPage() {
   const { isOnline, setIsOnline } = useContext(UserContext);
@@ -20,9 +21,15 @@ function UserDashboardPage() {
   const [programme, setProgramme] = useState();
   const [programmeById, setProgrammeById] = useState();
   const [role, setRole] = useState();
+  const [picture, setPicture] = useState(null);
+  const [photoPath, setPhotoPath] = useState(null);
+
   const navigate = useNavigate();
   const navAdmin = useNavigate();
   const { id } = isOnline;
+
+  // If picture = photoPath must be slice
+  const photoPathLink = picture ? photoPath.slice(7) : null;
 
   // Get user details
   useEffect(() => {
@@ -37,12 +44,16 @@ function UserDashboardPage() {
           Address: address,
           Email: email,
           IsCoach: isCoach,
+          photoId: picture,
+          photo_path: photoPath,
         } = response.data;
         setLastname(lastname);
         setFirstname(firstname);
         setAddress(address);
         setEmail(email);
         setRole(isCoach);
+        setPicture(picture);
+        setPhotoPath(photoPath);
       })
       .catch((error) => console.error(error));
   }, []);
@@ -62,29 +73,6 @@ function UserDashboardPage() {
       })
       .catch((error) => console.error(error));
   }, []);
-
-  // Function update member details
-  function handleSubmit(e) {
-    e.preventDefault();
-    axios
-      .put(
-        `${import.meta.env.VITE_BACKEND_URL}/userdatas`,
-        {
-          id,
-          Name: lastname,
-          Firstname: firstname,
-          Address: address,
-          Email: email,
-        },
-        {
-          withCredentials: true,
-        }
-      )
-      .then(() => {
-        Swal.fire("Vos données personnelles ont bien été modifiées.");
-      })
-      .catch((error) => console.error(error));
-  }
 
   function handleSubmitImage(e) {
     if (!id) {
@@ -108,15 +96,18 @@ function UserDashboardPage() {
         e.preventDefault();
         axios
           .put(
-            `${import.meta.env.VITE_BACKEND_URL}/userdatas`,
+            `${import.meta.env.VITE_BACKEND_URL}/userdatas/photo`,
             { id, photoId },
             {
               withCredentials: true,
             }
           )
           .then(() => {
-            Swal.fire("La photo a bien été ajoutée.");
+            Swal.fire("La photo a bien été ajoutée.").then(() =>
+              window.location.reload()
+            );
           })
+
           .catch((error) => {
             console.error(
               'Erreur lors de la mise à jour de la table "adherent".',
@@ -130,6 +121,39 @@ function UserDashboardPage() {
           error
         );
       });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    // Update user datas
+    const updateUserPromise = axios.put(
+      `${import.meta.env.VITE_BACKEND_URL}/userdatasupdate`,
+      {
+        id,
+        Name: lastname,
+        Firstname: firstname,
+        Address: address,
+        Email: email,
+        photoId: picture,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+
+    // Add photo
+    const addPhotoPromise = handleSubmitImage(e);
+
+    // Execute 2 requests
+    Promise.all([updateUserPromise, addPhotoPromise])
+      .then(() => {
+        Swal.fire("Vos données personnelles ont bien été modifiées.").then(() =>
+          window.location.reload()
+        );
+      })
+
+      .catch((error) => console.error(error));
   }
 
   // Function serach a programme
@@ -266,7 +290,18 @@ function UserDashboardPage() {
           </form>
           {role === 0 && (
             <div className="user-photo-div">
-              <img className="user-photo" src={photo} alt="" />
+              {!picture ? (
+                <img className="user-photo" src={placeholder} alt="pictureq" />
+              ) : (
+                <img
+                  className="user-photo"
+                  src={`${import.meta.env.VITE_BACKEND_URL}/${photoPathLink}`}
+                  alt="pictures"
+                  onError={(e) => {
+                    console.error("Erreur lors du chargement de l'image :", e);
+                  }}
+                />
+              )}
               <form onSubmit={handleSubmitImage} className="user-datas-image">
                 <div>
                   <label htmlFor="image">Image</label>
@@ -276,11 +311,6 @@ function UserDashboardPage() {
                     name="photo"
                     onChange={(e) => setPhoto(e.target.files[0])}
                   />
-                </div>
-                <div>
-                  <button type="button" onClick={handleSubmitImage}>
-                    Ajouter une photo
-                  </button>
                 </div>
               </form>
             </div>

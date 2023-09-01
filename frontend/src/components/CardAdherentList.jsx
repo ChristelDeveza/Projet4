@@ -6,7 +6,7 @@ import CardAdherent from "./CardAdherent";
 
 function CardAdherentList(props) {
   const { updateDatas, deleteCardAdherent } = props;
-  // console.log(updateDatas.map((el) => el.id).join(" "));
+
   return (
     <div className="cardList">
       {" "}
