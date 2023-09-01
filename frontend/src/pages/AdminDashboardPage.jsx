@@ -77,7 +77,7 @@ function AdminDashboardPage() {
       )
       .then((response) => {
         setAdherentList(
-          response.data.filter((element) => element.Is_Abonnement === 0)
+          response.data.filter((element) => element.Is_Abonnement === null)
         );
       });
   }

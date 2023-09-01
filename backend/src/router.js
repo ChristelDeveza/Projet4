@@ -21,7 +21,7 @@ router.post(
   AdherentController.postPhoto
 );
 // Route update one user photo
-router.put("/userdatas", authorization, AdherentController.addPhoto);
+// router.put("/userdatas/photo", authorization, AdherentController.addPhoto);
 
 // Route get subscription
 router.get("/usersubscription/:id", AdherentController.getSubscriptionByUser);
@@ -36,7 +36,10 @@ router.get("/programme/:id", ProgrammeController.getProgrammeById);
 router.get("/userdatas", authorization, AdherentController.read);
 
 // Route update one user datas
-router.put("/userdatas", authorization, AdherentController.edit);
+router.put("/userdatasupdate", authorization, AdherentController.edit);
+
+// Route update avec photo
+router.put("/userdatas/photo", authorization, AdherentController.addPhoto);
 
 // Route logout
 router.get("/logout", authorization, AdherentController.logout);
@@ -51,7 +54,7 @@ router.get("/search/admin", authorization, isAdmin, AdherentController.search);
 router.get(
   "/admin/userProfile/:id",
   authorization,
-  // isAdmin,
+  isAdmin,
   AdherentController.readUserProfile
 );
 

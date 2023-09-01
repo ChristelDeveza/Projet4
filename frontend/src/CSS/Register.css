@@ -110,6 +110,4 @@ input:invalid[focus="true"] ~ span {
   .errorMsg {
     width: fit-content;
   }
-
-  
 }
