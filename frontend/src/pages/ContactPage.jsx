@@ -1,12 +1,17 @@
 import React from "react";
+import contactform from "../assets/Formulaire-de-Contact.jpg";
 
 function ContactPage() {
   return (
     <div>
-      <h1>En cours de construction ...</h1>
-      <h1>En cours de construction ...</h1>
-      <h1>En cours de construction ...</h1>
-      <h1>Ce site est un exercice réalisé dans le cadre d'une formation</h1>
+      <br /> <br /> <br /> <br /> <br /> <br /> <br />
+      <img src={contactform} alt="imagecontact" />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   );
 }
