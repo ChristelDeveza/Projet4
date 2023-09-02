@@ -7,6 +7,12 @@ class ProgrammeManager extends AbstractManager {
     return this.connection.query(`select * from  ${this.table}`);
   }
 
+  findProgById(id) {
+    return this.connection.query(`select * from  ${this.table} where id = ?`, [
+      id,
+    ]);
+  }
+
   insert(item) {
     return this.connection.query(
       `insert into ${this.table} (title) values (?)`,

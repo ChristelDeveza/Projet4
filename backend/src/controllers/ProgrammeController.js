@@ -4,7 +4,7 @@ class ProgrammeController {
   // Get programmes by id
   static getProgrammeById = (req, res) => {
     models.programme
-      .find(req.params.id)
+      .findProgById(req.params.id)
       .then(([rows]) => {
         if (rows[0] == null) {
           res.sendStatus(404);

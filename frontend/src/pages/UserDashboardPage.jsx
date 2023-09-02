@@ -8,7 +8,7 @@ import { BiRun } from "react-icons/bi";
 import { UserContext } from "../context/UserContext";
 import HeaderAccountUser from "../components/HeaderAccountUser";
 import "../CSS/UserDashboardPage.css";
-import placeholder from "../assets/cardio.jpg";
+import placeholder from "../assets/photo-placeholder.jpg";
 
 function UserDashboardPage() {
   const { isOnline, setIsOnline } = useContext(UserContext);
@@ -16,6 +16,7 @@ function UserDashboardPage() {
   const [firstname, setFirstname] = useState("");
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
+  const [subscriptionId, setSubscriptionId] = useState();
   const [photo, setPhoto] = useState(null);
   const [subscription, setSubscription] = useState([]);
   const [programme, setProgramme] = useState();
@@ -44,6 +45,7 @@ function UserDashboardPage() {
           Address: address,
           Email: email,
           IsCoach: isCoach,
+          Is_Abonnement: subscriptionId,
           photoId: picture,
           photo_path: photoPath,
         } = response.data;
@@ -52,6 +54,7 @@ function UserDashboardPage() {
         setAddress(address);
         setEmail(email);
         setRole(isCoach);
+        setSubscriptionId(subscriptionId);
         setPicture(picture);
         setPhotoPath(photoPath);
       })
@@ -326,8 +329,32 @@ function UserDashboardPage() {
             </div>
           )}
         </div>
+        {subscriptionId === null && role !== 1 && (
+          <div className="subs-user-box">
+            <h2 className="box-entete">MON ABONNEMENT</h2>
+            <div className="subs-text-box" id="flash">
+              <p>Vous n'avez pas encore souscrit d'abonnement.</p>
+              <p>
+                <GoFlame className="icon-flame" /> N'attendez plus !!
+              </p>
+              <br />
 
-        {role !== 1 && (
+              <p>
+                Sollicitez votre séance d'essai auprès de l'un de nos coachs.{" "}
+              </p>
+            </div>
+            <br />
+            <div className="arrow-container">
+              {" "}
+              <div className="arrow-left" />
+              <div className="arrow-text">
+                <h1>Contactez nous</h1>
+              </div>
+              <div className="arrow-right" />
+            </div>
+          </div>
+        )}
+        {subscriptionId !== null && role !== 1 && (
           <div className="subs-user-box">
             <div>
               <h2 className="box-entete">MON ABONNEMENT</h2>

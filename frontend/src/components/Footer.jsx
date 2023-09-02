@@ -19,8 +19,8 @@ function Footer() {
         <MdOutlineAlternateEmail /> fitncheap@exemple.com
       </p>
       <p className="pContact">
-        Site réalisé dans le cadre d'une formation - Sujet réalisation d'un site
-        frontend et backend
+        Site réalisé dans le cadre de la formation Développeur web - Wild Code
+        School
       </p>
     </div>
   );
