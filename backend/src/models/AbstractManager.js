@@ -20,17 +20,14 @@ class AbstractManager {
   find(id) {
     return this.connection
       .query(
-        `SELECT a.Name, a.Firstname, a.Address, a.Email, a.IsCoach, a.photoId
-         FROM ${this.table} AS a
-         WHERE a.id = ?`,
+        `SELECT a.Name, a.Firstname, a.Address, a.Email, a.IsCoach, a.Is_Abonnement, a.photoId FROM ${this.table} AS a WHERE a.id = ?`,
         [id]
       )
       .then(([rows]) => {
         if (rows.length === 0 || rows[0].photoId === null) {
           // LEFT JOIN if photoId is null
           return this.connection.query(
-            `SELECT a.Name, a.Firstname, a.Address, a.Email, a.IsCoach, a.photoId, p.photo_path
-             FROM ${this.table} AS a
+            `SELECT a.Name, a.Firstname, a.Address, a.Email, a.Is_Abonnement, a.IsCoach, a.photoId, p.photo_path FROM ${this.table} AS a
              LEFT JOIN photo AS p ON p.id = a.photoId
              WHERE a.id = ?`,
             [id]
@@ -38,7 +35,7 @@ class AbstractManager {
         }
         // else JOIN (photoId not null)
         return this.connection.query(
-          `select a.Name, a.Firstname, a.Address, a.Email, a.IsCoach, a.photoId, p.photo_path from  ${this.table} as a join photo as p on p.id = a.photoId where a.id = ?`,
+          `select a.Name, a.Firstname, a.Address, a.Email, a.IsCoach, a.Is_Abonnement, a.photoId, p.photo_path from ${this.table} as a join photo as p on p.id = a.photoId where a.id = ?`,
           [id]
         );
       });
