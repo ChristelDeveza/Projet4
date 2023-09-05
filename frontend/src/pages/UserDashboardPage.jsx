@@ -106,9 +106,11 @@ function UserDashboardPage() {
             }
           )
           .then(() => {
-            Swal.fire("La photo a bien été ajoutée.").then(() =>
-              window.location.reload()
-            );
+            Swal.fire({
+              icon: "success",
+              title: "Confirmation",
+              text: "La photo a bien été ajoutée.",
+            }).then(() => window.location.reload());
           })
 
           .catch((error) => {
@@ -151,9 +153,11 @@ function UserDashboardPage() {
     // Execute 2 requests
     Promise.all([updateUserPromise, addPhotoPromise])
       .then(() => {
-        Swal.fire("Vos données personnelles ont bien été modifiées.").then(() =>
-          window.location.reload()
-        );
+        Swal.fire({
+          icon: "success",
+          title: "Confirmation",
+          text: "Vos données personnelles ont bien été modifiées.",
+        }).then(() => window.location.reload());
       })
 
       .catch((error) => console.error(error));
@@ -323,7 +327,11 @@ function UserDashboardPage() {
               <div>
                 <h3>Accéder à mon tableau de bord</h3>
               </div>
-              <button type="button" onClick={navigationAdmin}>
+              <button
+                className="btn-dashboard-user"
+                type="button"
+                onClick={navigationAdmin}
+              >
                 Tableau de bord
               </button>
             </div>
@@ -376,7 +384,7 @@ function UserDashboardPage() {
                     <h4>
                       <GoFlame className="icon-flame" />
                       Prix de l'abonnement : {subscription.Price},99 € pendant 6
-                      mois, puis 23,99 €
+                      mois, puis 21,99 €
                     </h4>
                   </div>
                   <div>
@@ -398,7 +406,7 @@ function UserDashboardPage() {
               Choisissez un programme:
             </label>
 
-            <select onChange={(e) => searchProgramm(e)}>
+            <select className="select-prog" onChange={(e) => searchProgramm(e)}>
               {programme &&
                 programme.map((element) => {
                   return (
@@ -409,7 +417,7 @@ function UserDashboardPage() {
                 })}
             </select>
             {programmeById ? (
-              <div>
+              <div className="prog-description">
                 <h3>{programmeById.Name}</h3>
                 <p>{programmeById.Description}</p>
               </div>

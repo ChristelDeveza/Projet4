@@ -8,13 +8,17 @@
   margin-top: 10rem;
 }
 
+.form-user-profile-admin {
+  display: flex;
+  flex-direction: column;
+}
+
 .input-box {
   display: flex;
   flex-direction: column;
 }
 
 #input-box {
-  
   background-color: var(--lemon-meringue);
   border-radius: 3px;
   padding: 0 10px;
@@ -22,4 +26,17 @@
   font-size: 20px;
   font-weight: 300;
   border: 1px solid black;
+}
+
+.deleteBtn-list-profile {
+  background-color: var(--maximum-red);
+  padding: 1rem;
+  border-radius: 3px;
+  margin: 2rem;
+  font-size: x-large;
+  cursor: pointer;
+}
+
+.deleteBtn-list-profile:hover {
+  background-color: var(--lemon-meringue);
 }

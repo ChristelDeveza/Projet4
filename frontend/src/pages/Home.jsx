@@ -19,7 +19,7 @@ export default function Home() {
       <div className="left-home-box">
         <div className="text-home-header">
           <GoFlame className="icon-flame" />
-          <span>N'attends plus, contacte nous pour une scéance d'essai</span>
+          <span>N'attends plus, contacte nous pour une séance d'essai</span>
         </div>
         <div className="title">
           <div>Quelque soit ton objectif,</div>{" "}
@@ -30,19 +30,19 @@ export default function Home() {
             <span>
               +<CountUp end={5} />
             </span>
-            <span>experts</span>
+            <span id="count-name">experts</span>
           </div>
           <div>
             <span>
               +<CountUp end={136} />
             </span>
-            <span>adhérents</span>
+            <span id="count-name">adhérents</span>
           </div>
           <div>
             <span>
               +<CountUp end={45} />
             </span>
-            <span>programmes</span>
+            <span id="count-name">programmes</span>
           </div>
         </div>
         <div className="home-btn">
