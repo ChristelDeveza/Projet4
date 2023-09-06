@@ -1,7 +1,7 @@
 .img-dashboard-page {
   background-size: cover;
   object-fit: cover;
-  width: 202vh;
+  width: 250vh;
   height: 600px;
 }
 /* 
@@ -25,7 +25,7 @@ h2 {
   flex-direction: row;
   justify-content: space-around;
   border: 1px solid black;
-  color:var(--prussian-blue)
+  color: var(--prussian-blue);
 }
 
 .box-division {
@@ -116,16 +116,39 @@ h2 {
   width: 9rem;
 }
 
+.search:hover {
+  background-color: var(--lemon-meringue);
+  color: black;
+}
+
 .all {
   background-color: var(--maximum-red);
+}
+
+.all:hover {
+  background-color: var(--maximum-yellow-red);
+  color: black;
 }
 
 .new {
   background-color: var(--prussian-blue);
 }
 
+.new:hover {
+  background-color: rgb(201, 201, 236);
+  color: black;
+}
+
 .create {
   color: black;
+}
+
+.create:hover {
+  background-color: aliceblue;
+}
+
+.disconnect-button:hover {
+  background-color: var(--maximum-red);
 }
 
 .cardList {
@@ -145,4 +168,9 @@ h2 {
 
 .deleteBtn-list {
   background-color: var(--maximum-red);
+  cursor: pointer;
+}
+
+.deleteBtn-list:hover {
+  background-color: var(--maximum-yellow-red);
 }

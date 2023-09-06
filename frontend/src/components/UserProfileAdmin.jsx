@@ -65,7 +65,7 @@ function UserProfileAdmin() {
     <div className="user-profile-box">
       <h1 className="title-user-profile">Profil adhérent</h1>
 
-      <form action="">
+      <form className="form-user-profile-admin" action="">
         <div className="input-box">
           <label className="label-input" htmlFor="nom">
             Nom
@@ -156,7 +156,7 @@ function UserProfileAdmin() {
         </div>
         <button
           type="button"
-          className="deleteBtn-list"
+          className="deleteBtn-list-profile"
           onClick={() => {
             deletAdherentProfile();
           }}
